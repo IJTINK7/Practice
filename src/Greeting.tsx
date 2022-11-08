@@ -5,9 +5,9 @@ export const Greeting = () => {
 		<div>
 			<div>
 				<h2>Hello, friend!</h2>
-				<h3>What to learn</h3>
 			</div>
 			<div>
+				<h3>What to learn</h3>
 				<ol>
 					<li>HTML</li>
 					<li>CSS</li>
