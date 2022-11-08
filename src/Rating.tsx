@@ -3,7 +3,7 @@ import React from "react";
 type RatingPropsType = {
 	value: number;
 }
-export const Rating = (props: RatingPropsType) => {
+const Rating = (props: RatingPropsType) => {
 	debugger
 	if (props.value === 1) {
 		return (

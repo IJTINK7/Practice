@@ -2,12 +2,13 @@ import React from 'react';
 import './App.css';
 import Greeting from "./Greeting";
 import Rating from "./Rating";
+import ToDoList from "./ToDoList";
 
 function App() {
 	return (
 		<div className="App">
-			<h1>Hello, samurai! Let's go!</h1>
 			<Greeting/>
+			<ToDoList/>
 			<Rating value={3}/>
 		</div>
 	);
