@@ -11,7 +11,7 @@ function App() {
 			<ToDoList/>
 			<Rating value={3}/>
 		</div>
-	);
+	)
 }
 //Changing the path of repository again
 export default App;
