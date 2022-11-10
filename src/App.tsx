@@ -13,6 +13,7 @@ function App() {
 			<Rating value={5}/>
 			<Rating value={2}/>
 			<div>developer popup branch commit 1</div>
+			<div>developer popup branch commit 2</div>
 		</div>
 	)
 }
