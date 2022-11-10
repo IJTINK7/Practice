@@ -13,6 +13,7 @@ function App() {
 			<Rating value={5}/>
 			<Rating value={2}/>
 			<div>developer login branch commit</div>
+			<div>developer login branch commit 2</div>
 		</div>
 	)
 }
