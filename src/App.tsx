@@ -11,6 +11,7 @@ function App() {
 			<ToDoList/>
 			<Rating value={3}/>
 			<Rating value={5}/>
+			<Rating value={2}/>
 		</div>
 	)
 }
