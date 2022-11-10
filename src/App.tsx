@@ -3,6 +3,7 @@ import './App.css';
 import Greeting from "./Greeting";
 import Rating from "./Rating";
 import ToDoList from "./ToDoList";
+import {Post} from './Test/Post';
 
 function App() {
 	return (
@@ -20,6 +21,7 @@ function App() {
 			<div>new changes again</div>
 			<div>23423423</div>
 			<div>11123</div>
+			<Post />
 		</div>
 	)
 }
