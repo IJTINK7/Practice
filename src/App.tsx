@@ -10,6 +10,7 @@ function App() {
 			<Greeting/>
 			<ToDoList/>
 			<Rating value={3}/>
+			<Rating value={5}/>
 		</div>
 	)
 }
