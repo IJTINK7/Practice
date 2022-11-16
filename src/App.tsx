@@ -3,7 +3,6 @@ import './App.css';
 import Greeting from "./Greeting";
 import Rating from "./Rating";
 import ToDoList from "./ToDoList";
-import {Post} from './Test/Post';
 
 function App() {
 	return (
