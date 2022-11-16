@@ -20,7 +20,6 @@ function App() {
 			<div>new changes again</div>
 			<div>23423423</div>
 			<div>11123</div>
-			<Post />
 		</div>
 	)
 }
