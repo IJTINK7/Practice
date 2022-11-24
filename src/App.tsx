@@ -3,6 +3,7 @@ import './App.css';
 import Greeting from "./Greeting";
 import Rating from "./Rating";
 import ToDoList from "./ToDoList";
+import {TestFilterComponent} from "./TestFilterComponent";
 
 type FilterType = 'All' | 'Dollar' | 'Ruble';
 function App() {
@@ -65,9 +66,9 @@ function App() {
 				<button onClick={()=>{clickButtonFunction("Dollar")}}>Dollar</button>
 				<button onClick={()=>{clickButtonFunction("All")}}>All</button>
 			</div>
+			<TestFilterComponent/>
 
 		</div>
 	)
 }
-//Changing the path of repository again
 export default App;
