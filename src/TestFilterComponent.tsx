@@ -25,7 +25,6 @@ export const TestFilterComponent =()=>{
 
 	const clickTheButton =(valueKey:string)=>{
 		setKeyName(valueKey);
-		console.log(valueKey);
 	}
 
 	return(
