@@ -9,7 +9,7 @@ function App() {
 	const clickButton= () => {
 		setCount(++count);
 	}
-	let [money, setMoney] = useState([
+	let money = [
 		{banknote: 'dollar', nominal: 100, number: ' a1234567890'},
 		{banknote: 'dollar', nominal: 50, number: ' z1234567890'},
 		{banknote: 'ruble', nominal: 100, number: ' w1234567890'},
@@ -18,18 +18,18 @@ function App() {
 		{banknote: 'ruble', nominal: 100, number: ' r1234567890'},
 		{banknote: 'dollar', nominal: 50, number: ' x1234567890'},
 		{banknote: 'ruble', nominal: 50, number: ' v1234567890'}
-	]);
+	];
+	let[buttonValue, setButtonValue] = useState("All");
 	let filteredMoney = money;
+	if (buttonValue === 'Ruble'){
+		filteredMoney = money.filter(el=>el.banknote === 'ruble')
+	}
+	if (buttonValue === 'Dollar'){
+		filteredMoney = money.filter(el=>el.banknote === 'dollar')
+	}
 
 	let clickButtonFunction =(keyValue:string)=>{
-		console.log(keyValue)
-		if(keyValue === 'Ruble'){
-			filteredMoney = money.filter(el=>el.banknote === 'ruble')
-		}
-		if(keyValue === 'Dollar'){
-			filteredMoney = money.filter(el=>el.banknote === 'dollar')
-		}
-		setMoney(filteredMoney)
+		setButtonValue(keyValue)
 	}
 
 	return (
