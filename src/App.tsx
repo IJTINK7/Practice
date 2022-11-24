@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Greeting from "./Greeting";
 import Rating from "./Rating";
 import ToDoList from "./ToDoList";
 
 function App() {
+	let [count, setCount] = useState(0);
+	const clickButton= () =>{
+		setCount(++count);
+	}
 	return (
 		<div className="App">
 			<Greeting/>
@@ -16,10 +20,11 @@ function App() {
 			<div>developer login branch commit 2</div>
 			<div>developer popup branch commit 1</div>
 			<div>developer popup branch commit 2</div>
-			<div>new changes</div>
-			<div>new changes again</div>
-			<div>23423423</div>
-			<div>11123</div>
+			<div>
+				<p>You clicked {count} times </p>
+				<button onClick={clickButton}>Click me</button>
+			</div>
+
 		</div>
 	)
 }
