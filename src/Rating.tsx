@@ -4,7 +4,6 @@ type RatingPropsType = {
 	value: number;
 }
 const Rating = (props: RatingPropsType) => {
-	debugger
 	if (props.value === 1) {
 		return (
 			<div>
