@@ -73,7 +73,6 @@ type StarPropsType = {
 	isActive: boolean;
 }
 const Star = (props: StarPropsType) => {
-	debugger
 	if (props.isActive) {
 		return (
 			<span><b>Star </b></span>
