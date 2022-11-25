@@ -1,29 +1,44 @@
-import React from "react";
+import React, {useState} from "react";
 
 type ToDoListType ={
 	title: string;
-	list: Array<TasksType>;
-	removeTask: (taskId:number)=> void;
-	filterButtonClick: (keyValue: string)=> void;
-}
-
-type TasksType ={
-	id: number;
-	checked: boolean;
-	name: string;
 }
 
 const ToDoList = (props:ToDoListType) => {
+	let [tasks, setTasks] = useState<Array<{id: number; checked: boolean; name: string;}>>([
+		{id: 1, checked: true, name: "HTML"},
+		{id: 2, checked: true, name: "CSS"},
+		{id: 3, checked: true, name: "JS"},
+		{id: 4, checked: false, name: "React"},
+		{id: 5, checked: false, name: "TS"},
+	]);
+	const removeTaskFunction = (taskId: number) => {
+		setTasks(tasks.filter(el => el.id !== taskId));
+	}
+
+	let [filterButtonValue, setFilterButtonValue] = useState('All');
+	let filteredTasks = tasks;
+
+	const filterButtonClick = (keyValue: string) => {
+		setFilterButtonValue(keyValue)
+	}
+	if (filterButtonValue === "Active") {
+		filteredTasks = tasks.filter(el => !el.checked)
+	}
+	if (filterButtonValue === "Completed") {
+		filteredTasks = tasks.filter(el => el.checked)
+	}
+
 	return (
 		<div>
 			<h3>{props.title}</h3>
 			<input/>
 			<button>+</button>
 			<ul>
-				{props.list.map((el) => {
+				{filteredTasks.map((el) => {
 					return (
 						<li key={el.id}>
-							<button onClick={() => {props.removeTask(el.id)}}>x</button>
+							<button onClick={() => {removeTaskFunction(el.id)}}>x</button>
 							<input type="checkbox" checked={el.checked}/>
 							<span>{el.name}</span>
 						</li>
@@ -31,9 +46,9 @@ const ToDoList = (props:ToDoListType) => {
 				})}
 			</ul>
 			<div>
-				<button onClick={()=>{props.filterButtonClick("All")}}>All</button>
-				<button onClick={()=>{props.filterButtonClick("Active")}}>Active</button>
-				<button onClick={()=>{props.filterButtonClick("Completed")}}>Completed</button>
+				<button onClick={()=>{filterButtonClick("All")}}>All</button>
+				<button onClick={()=>{filterButtonClick("Active")}}>Active</button>
+				<button onClick={()=>{filterButtonClick("Completed")}}>Completed</button>
 			</div>
 		</div>
 	);
