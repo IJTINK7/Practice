@@ -7,6 +7,7 @@ import {TestFilterComponent} from "./TestFilterComponent";
 
 type FilterType = 'All' | 'Dollar' | 'Ruble';
 function App() {
+
 	let [count, setCount] = useState(0);
 	const clickButton= () => {
 		setCount(++count);
@@ -21,6 +22,7 @@ function App() {
 		{banknote: 'dollar', nominal: 50, number: ' x1234567890'},
 		{banknote: 'ruble', nominal: 50, number: ' v1234567890'}
 	];
+
 	let[buttonValue, setButtonValue] = useState<FilterType>("All");
 	let filteredMoney = money;
 	if (buttonValue === 'Ruble'){
@@ -34,10 +36,23 @@ function App() {
 		setButtonValue(keyValue);
 	}
 
+	let [tasks, setTasks] = useState([
+		{id: 1, checked: true, name: "HTML"},
+		{id: 2, checked: true, name: "CSS"},
+		{id: 3, checked: true, name: "JS"},
+		{id: 4, checked: false, name: "React"},
+		{id: 5, checked: false, name: "TS"},
+	]);
+
+	const removeTaskFunction = (taskId:number)=>{
+		setTasks(tasks.filter(el => el.id !== taskId));
+	}
+
+
 	return (
 		<div className="App">
 			<Greeting/>
-			<ToDoList/>
+			<ToDoList title={"What to learn?"} list={tasks} removeTask={removeTaskFunction}/>
 			<Rating value={3}/>
 			<Rating value={5}/>
 			<Rating value={2}/>
