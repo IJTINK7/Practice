@@ -2,11 +2,10 @@ import React, {useState} from "react";
 
 export const Counter = () => {
 	let [count, setCount] = useState(0);
-	const clickButton= () => {
+	const clickButton = () => {
 		setCount(++count);
 	}
-
-	return(
+	return (
 		<div>
 			<p>You clicked {count} times </p>
 			<button onClick={clickButton}>Click me</button>

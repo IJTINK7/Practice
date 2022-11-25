@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 
-type ToDoListType ={
+type ToDoListType = {
 	title: string;
 }
 
-const ToDoList = (props:ToDoListType) => {
-	let [tasks, setTasks] = useState<Array<{id: number; checked: boolean; name: string;}>>([
+export const ToDoList = (props: ToDoListType) => {
+	let [tasks, setTasks] = useState<Array<{ id: number; checked: boolean; name: string; }>>([
 		{id: 1, checked: true, name: "HTML"},
 		{id: 2, checked: true, name: "CSS"},
 		{id: 3, checked: true, name: "JS"},
@@ -18,7 +18,6 @@ const ToDoList = (props:ToDoListType) => {
 
 	let [filterButtonValue, setFilterButtonValue] = useState('All');
 	let filteredTasks = tasks;
-
 	const filterButtonClick = (keyValue: string) => {
 		setFilterButtonValue(keyValue)
 	}
@@ -28,7 +27,6 @@ const ToDoList = (props:ToDoListType) => {
 	if (filterButtonValue === "Completed") {
 		filteredTasks = tasks.filter(el => el.checked)
 	}
-
 	return (
 		<div>
 			<h3>{props.title}</h3>
@@ -38,20 +36,18 @@ const ToDoList = (props:ToDoListType) => {
 				{filteredTasks.map((el) => {
 					return (
 						<li key={el.id}>
-							<button onClick={() => {removeTaskFunction(el.id)}}>x</button>
-							<input type="checkbox" checked={el.checked}/>
-							<span>{el.name}</span>
+								<button onClick={() => {removeTaskFunction(el.id)}}>x</button>
+								<input type="checkbox" checked={el.checked}/>
+								<span>{el.name}</span>
 						</li>
 					)
 				})}
 			</ul>
 			<div>
-				<button onClick={()=>{filterButtonClick("All")}}>All</button>
-				<button onClick={()=>{filterButtonClick("Active")}}>Active</button>
-				<button onClick={()=>{filterButtonClick("Completed")}}>Completed</button>
+				<button onClick={() => {filterButtonClick("All")}}>All</button>
+				<button onClick={() => {filterButtonClick("Active")}}>Active</button>
+				<button onClick={() => {filterButtonClick("Completed")}}>Completed</button>
 			</div>
 		</div>
 	);
 }
-
-export default ToDoList;

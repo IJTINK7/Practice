@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import Greeting from "./Greeting";
-import Rating from "./Rating";
-import ToDoList from "./ToDoList";
+import {Rating} from "./Rating";
+import {ToDoList} from "./ToDoList";
 import {TestFilterComponent} from "./TestFilterComponent";
 import {Counter} from "./Counter";
 import {Currency} from "./Currency";

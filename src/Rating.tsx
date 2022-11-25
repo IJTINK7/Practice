@@ -3,7 +3,7 @@ import React from "react";
 type RatingPropsType = {
 	value: number;
 }
-const Rating = (props: RatingPropsType) => {
+export const Rating = (props: RatingPropsType) => {
 	if (props.value === 1) {
 		return (
 			<div>
@@ -82,6 +82,4 @@ const Star = (props: StarPropsType) => {
 			<span>Star </span>
 		);
 	}
-
 }
-export default Rating;
