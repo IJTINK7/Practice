@@ -29,6 +29,11 @@ const ToDoList = (props:ToDoListType) => {
 					)
 				})}
 			</ul>
+			<div>
+				<button onClick={()=>{filterButtonClick("All")}}>All</button>
+				<button onClick={()=>{filterButtonClick("Active")}}>Active</button>
+				<button onClick={()=>{filterButtonClick("Completed")}}>Completed</button>
+			</div>
 		</div>
 	);
 }
