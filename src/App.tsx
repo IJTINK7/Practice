@@ -22,7 +22,6 @@ function App() {
 		{banknote: 'dollar', nominal: 50, number: ' x1234567890'},
 		{banknote: 'ruble', nominal: 50, number: ' v1234567890'}
 	];
-
 	let[buttonValue, setButtonValue] = useState<FilterType>("All");
 	let filteredMoney = money;
 	if (buttonValue === 'Ruble'){
@@ -31,7 +30,6 @@ function App() {
 	if (buttonValue === 'Dollar'){
 		filteredMoney = money.filter(el=>el.banknote === 'dollar')
 	}
-
 	let clickButtonFunction =(keyValue:FilterType)=>{
 		setButtonValue(keyValue);
 	}
@@ -48,18 +46,26 @@ function App() {
 		setTasks(tasks.filter(el => el.id !== taskId));
 	}
 
+	let [filterButtonValue, setFilterButtonValue] = useState('All');
+	let filteredTasks = tasks;
+
+	const filterButtonClick =(keyValue:string)=>{
+		setFilterButtonValue(keyValue)
+	}
+	if(filterButtonValue === "Active"){
+		filteredTasks = tasks.filter(el=> !el.checked)
+	}
+	if(filterButtonValue === "Completed"){
+		filteredTasks = tasks.filter(el=> el.checked)
+	}
 
 	return (
 		<div className="App">
 			<Greeting/>
-			<ToDoList title={"What to learn?"} list={tasks} removeTask={removeTaskFunction}/>
+			<ToDoList title={"What to learn?"} list={filteredTasks} removeTask={removeTaskFunction} filterButtonClick={filterButtonClick}/>
 			<Rating value={3}/>
 			<Rating value={5}/>
 			<Rating value={2}/>
-			<div>developer login branch commit</div>
-			<div>developer login branch commit 2</div>
-			<div>developer popup branch commit 1</div>
-			<div>developer popup branch commit 2</div>
 			<div>
 				<p>You clicked {count} times </p>
 				<button onClick={clickButton}>Click me</button>

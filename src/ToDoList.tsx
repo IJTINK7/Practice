@@ -4,6 +4,7 @@ type ToDoListType ={
 	title: string;
 	list: Array<TasksType>;
 	removeTask: (taskId:number)=> void;
+	filterButtonClick: (keyValue: string)=> void;
 }
 
 type TasksType ={
@@ -30,9 +31,9 @@ const ToDoList = (props:ToDoListType) => {
 				})}
 			</ul>
 			<div>
-				<button onClick={()=>{filterButtonClick("All")}}>All</button>
-				<button onClick={()=>{filterButtonClick("Active")}}>Active</button>
-				<button onClick={()=>{filterButtonClick("Completed")}}>Completed</button>
+				<button onClick={()=>{props.filterButtonClick("All")}}>All</button>
+				<button onClick={()=>{props.filterButtonClick("Active")}}>Active</button>
+				<button onClick={()=>{props.filterButtonClick("Completed")}}>Completed</button>
 			</div>
 		</div>
 	);
