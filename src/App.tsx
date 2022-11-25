@@ -4,14 +4,12 @@ import Greeting from "./Greeting";
 import Rating from "./Rating";
 import ToDoList from "./ToDoList";
 import {TestFilterComponent} from "./TestFilterComponent";
+import {Counter} from "./Counter";
 
 type FilterType = 'All' | 'Dollar' | 'Ruble';
 function App() {
 
-	let [count, setCount] = useState(0);
-	const clickButton= () => {
-		setCount(++count);
-	}
+
 	let money = [
 		{banknote: 'dollar', nominal: 100, number: ' a1234567890'},
 		{banknote: 'dollar', nominal: 50, number: ' z1234567890'},
@@ -66,10 +64,7 @@ function App() {
 			<Rating value={3}/>
 			<Rating value={5}/>
 			<Rating value={2}/>
-			<div>
-				<p>You clicked {count} times </p>
-				<button onClick={clickButton}>Click me</button>
-			</div>
+
 			<ul>
 				{filteredMoney.map((objFromMoneyArr, index)=>{
 					return (
@@ -88,6 +83,7 @@ function App() {
 				<button onClick={()=>{clickButtonFunction("All")}}>All</button>
 			</div>
 			<TestFilterComponent/>
+			<Counter />
 
 		</div>
 	)
