@@ -5,32 +5,11 @@ import Rating from "./Rating";
 import ToDoList from "./ToDoList";
 import {TestFilterComponent} from "./TestFilterComponent";
 import {Counter} from "./Counter";
+import {Currency} from "./Currency";
 
-type FilterType = 'All' | 'Dollar' | 'Ruble';
+
 function App() {
 
-
-	let money = [
-		{banknote: 'dollar', nominal: 100, number: ' a1234567890'},
-		{banknote: 'dollar', nominal: 50, number: ' z1234567890'},
-		{banknote: 'ruble', nominal: 100, number: ' w1234567890'},
-		{banknote: 'dollar', nominal: 100, number: ' e1234567890'},
-		{banknote: 'dollar', nominal: 50, number: ' c1234567890'},
-		{banknote: 'ruble', nominal: 100, number: ' r1234567890'},
-		{banknote: 'dollar', nominal: 50, number: ' x1234567890'},
-		{banknote: 'ruble', nominal: 50, number: ' v1234567890'}
-	];
-	let[buttonValue, setButtonValue] = useState<FilterType>("All");
-	let filteredMoney = money;
-	if (buttonValue === 'Ruble'){
-		filteredMoney = money.filter(el=>el.banknote === 'ruble')
-	}
-	if (buttonValue === 'Dollar'){
-		filteredMoney = money.filter(el=>el.banknote === 'dollar')
-	}
-	let clickButtonFunction =(keyValue:FilterType)=>{
-		setButtonValue(keyValue);
-	}
 
 	let [tasks, setTasks] = useState([
 		{id: 1, checked: true, name: "HTML"},
@@ -61,28 +40,15 @@ function App() {
 		<div className="App">
 			<Greeting/>
 			<ToDoList title={"What to learn?"} list={filteredTasks} removeTask={removeTaskFunction} filterButtonClick={filterButtonClick}/>
+			<hr/>
 			<Rating value={3}/>
 			<Rating value={5}/>
 			<Rating value={2}/>
-
-			<ul>
-				{filteredMoney.map((objFromMoneyArr, index)=>{
-					return (
-						<li key={index}>
-							<span>{objFromMoneyArr.banknote}</span>
-							<span>{objFromMoneyArr.nominal}</span>
-							<span>{objFromMoneyArr.number}</span>
-						</li>
-
-					)
-				})}
-			</ul>
-			<div>
-				<button onClick={()=>{clickButtonFunction("Ruble")}}>Ruble</button>
-				<button onClick={()=>{clickButtonFunction("Dollar")}}>Dollar</button>
-				<button onClick={()=>{clickButtonFunction("All")}}>All</button>
-			</div>
+			<hr/>
+			<Currency/>
+			<hr/>
 			<TestFilterComponent/>
+			<hr/>
 			<Counter />
 
 		</div>
