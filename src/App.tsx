@@ -7,6 +7,7 @@ import {TestFilterComponent} from "./TestFilterComponent";
 import {Counter} from "./Counter";
 import {Currency} from "./Currency";
 import {NewComponent} from "./NewComponent";
+import {Input} from "./Input";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
 			<hr/>
 			<Counter/>
 			<NewComponent/>
+			<Input/>
 		</div>
 	)
 }
