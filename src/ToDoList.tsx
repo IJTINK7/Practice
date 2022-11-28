@@ -33,12 +33,15 @@ export const ToDoList = (props: ToDoListType) => {
 	if (filterButtonValue === "Completed") {
 		filteredTasks = tasks.filter(el => el.checked)
 	}
-	const [newTaskTitle, setNewTaskTitle] = useState('');
+	const [newTaskTitle, setNewTaskTitle] = useState("");
 	return (
 		<div>
 			<h3>{props.title}</h3>
 			<input value={newTaskTitle} onChange={(event)=>{setNewTaskTitle(event.currentTarget.value)}}/>
-			<button onClick={()=>{addTaskFunction(newTaskTitle)}}>+</button>
+			<button onClick={()=>{
+				addTaskFunction(newTaskTitle);
+				setNewTaskTitle("")
+			}}>+</button>
 			<ul>
 				{filteredTasks.map((el) => {
 					return (
