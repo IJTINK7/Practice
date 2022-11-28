@@ -16,8 +16,8 @@ export const ToDoList = (props: ToDoListType) => {
 	const removeTaskFunction = (taskId: string) => {
 		setTasks(tasks.filter(el => el.id !== taskId));
 	}
-	const addTaskFunction = () => {
-		let newTask = {id: v1(), checked: false, name: "New Task"};
+	const addTaskFunction = (inputValue: string) => {
+		let newTask = {id: v1(), checked: false, name: inputValue};
 		let newTasks = [newTask, ...tasks];
 		setTasks(newTasks)
 	}
@@ -33,11 +33,12 @@ export const ToDoList = (props: ToDoListType) => {
 	if (filterButtonValue === "Completed") {
 		filteredTasks = tasks.filter(el => el.checked)
 	}
+	const [newTaskTitle, setNewTaskTitle] = useState('');
 	return (
 		<div>
 			<h3>{props.title}</h3>
-			<input/>
-			<button onClick={()=>{addTaskFunction()}}>+</button>
+			<input value={newTaskTitle} onChange={(event)=>{setNewTaskTitle(event.currentTarget.value)}}/>
+			<button onClick={()=>{addTaskFunction(newTaskTitle)}}>+</button>
 			<ul>
 				{filteredTasks.map((el) => {
 					return (
