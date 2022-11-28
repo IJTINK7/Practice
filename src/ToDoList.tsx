@@ -1,19 +1,25 @@
 import React, {useState} from "react";
+import {v1} from "uuid";
 
 type ToDoListType = {
 	title: string;
 }
 
 export const ToDoList = (props: ToDoListType) => {
-	let [tasks, setTasks] = useState<Array<{ id: number; checked: boolean; name: string; }>>([
-		{id: 1, checked: true, name: "HTML"},
-		{id: 2, checked: true, name: "CSS"},
-		{id: 3, checked: true, name: "JS"},
-		{id: 4, checked: false, name: "React"},
-		{id: 5, checked: false, name: "TS"},
+	let [tasks, setTasks] = useState([
+		{id: v1(), checked: true, name: "HTML"},
+		{id: v1(), checked: true, name: "CSS"},
+		{id: v1(), checked: true, name: "JS"},
+		{id: v1(), checked: false, name: "React"},
+		{id: v1(), checked: false, name: "TS"},
 	]);
-	const removeTaskFunction = (taskId: number) => {
+	const removeTaskFunction = (taskId: string) => {
 		setTasks(tasks.filter(el => el.id !== taskId));
+	}
+	const addTaskFunction = () => {
+		let newTask = {id: v1(), checked: false, name: "New Task"};
+		let newTasks = [newTask, ...tasks];
+		setTasks(newTasks)
 	}
 
 	let [filterButtonValue, setFilterButtonValue] = useState('All');
@@ -31,7 +37,7 @@ export const ToDoList = (props: ToDoListType) => {
 		<div>
 			<h3>{props.title}</h3>
 			<input/>
-			<button>+</button>
+			<button onClick={()=>{addTaskFunction()}}>+</button>
 			<ul>
 				{filteredTasks.map((el) => {
 					return (
