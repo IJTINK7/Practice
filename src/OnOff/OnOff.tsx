@@ -1,10 +1,13 @@
 import React from "react";
 import OnOffStyles from "./OnOff.module.css"
-export const OnOff = () =>{
+type OnOffActiveType ={
+	isActive: boolean;
+}
+export const OnOff = (props: OnOffActiveType) =>{
 	return(
-		<div className ={OnOffStyles.container} >
+		<div className ={OnOffStyles.contain}>
 			<div className={OnOffStyles.On}>On</div>
-			<div className={OnOffStyles.Off}>Off</div>
+			<div className={OnOffStyles.Off}>{props.isActive}</div>
 			<div className={OnOffStyles.bulb}></div>
 		</div>
 	);
