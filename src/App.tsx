@@ -8,6 +8,7 @@ import {Counter} from "./Counter";
 import {Currency} from "./Currency";
 import {NewComponent} from "./NewComponent";
 import {Input} from "./Input";
+import {OnOff} from "./OnOff/OnOff";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
 			<Counter/>
 			<NewComponent/>
 			<Input/>
+			<OnOff/>
 		</div>
 	)
 }
