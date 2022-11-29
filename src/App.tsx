@@ -17,8 +17,8 @@ function App() {
 			<ToDoList title={"What to learn?"}/>
 			<hr/>
 			<Rating value={3}/>
-			<Rating value={5}/>
-			<Rating value={2}/>
+			<Rating value={1}/>
+			<Rating value={4}/>
 			<hr/>
 			<Currency/>
 			<hr/>
@@ -30,4 +30,5 @@ function App() {
 		</div>
 	)
 }
+
 export default App;
