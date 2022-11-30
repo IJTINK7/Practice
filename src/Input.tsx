@@ -8,14 +8,10 @@ export const Input = () => {
 			{message: 'message3'},
 		]
 	)
-	const addNewMessage  = (messageValue:string) => {
-		let newMessage = {message: messageValue};
-		setMessage([newMessage, ...message]);
-	}
 	return (
 		<div className="App">
 			<div>
-				<FullInput addNewMessage={addNewMessage}/>
+				<FullInput/>
 			</div>
 
 			{message.map((el, index) => {
