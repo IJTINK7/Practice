@@ -15,6 +15,11 @@ export const ToDoList = (props: ToDoListType) => {
 	const removeTaskFunction = (taskId: string) => {
 		setTasks(tasks.filter(el => el.id !== taskId));
 	}
+	const addTaskFunction = () => {
+		const newTask = {id: v1(), checked: false, name: "New Task"};
+		const newArray = [newTask, ...tasks];
+		setTasks(newArray);
+	}
 
 	let [filterButtonValue, setFilterButtonValue] = useState('All');
 	let filteredTasks = tasks;
