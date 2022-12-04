@@ -32,6 +32,7 @@ export const ToDoList = (props: ToDoListType) => {
 	if (filterButtonValue === "Completed") {
 		filteredTasks = tasks.filter(el => el.checked)
 	}
+	let [inputValue, setInputValue] = useState('');
 
 	const onAllClickHandler = () => filterButtonClick("All");
 	const onActiveClickHandler = () => filterButtonClick("Active");
@@ -39,8 +40,11 @@ export const ToDoList = (props: ToDoListType) => {
 	return (
 		<div>
 			<h3>{props.title}</h3>
-			<input/>
-			<button>+</button>
+			<input value={inputValue} onChange={(event)=>{
+				setInputValue(event.currentTarget.value);
+			}
+			}/>
+			<button onClick={addTaskFunction}>+</button>
 			<ul>
 				{filteredTasks.map((el) => {
 					const onRemoveHandler = () => removeTaskFunction(el.id);
