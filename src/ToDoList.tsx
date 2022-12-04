@@ -1,4 +1,4 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from "react";
+import React, {useState} from "react";
 import {v1} from "uuid";
 
 type ToDoListType = {
@@ -16,10 +16,10 @@ export const ToDoList = (props: ToDoListType) => {
 	const removeTaskFunction = (taskId: string) => {
 		setTasks(tasks.filter(el => el.id !== taskId));
 	}
-	const addTaskFunction = (inputValue: string) => {
-		let newTask = {id: v1(), checked: false, name: inputValue};
-		let newTasks = [newTask, ...tasks];
-		setTasks(newTasks)
+	const addTaskFunction =(task:string) =>{
+		let newTask = {id: v1(), checked: false, name: task};
+		const newArray = [newTask, ...tasks];
+		setTasks(newArray);
 	}
 
 	let [filterButtonValue, setFilterButtonValue] = useState('All');
@@ -33,10 +33,8 @@ export const ToDoList = (props: ToDoListType) => {
 	if (filterButtonValue === "Completed") {
 		filteredTasks = tasks.filter(el => el.checked)
 	}
-	const [newTaskTitle, setNewTaskTitle] = useState("");
-	const onNewTitleChangeHandler = (e:ChangeEvent<HTMLInputElement> ) => {
-		setNewTaskTitle(e.currentTarget.value)
-	}
+	 let [inputValue, setInputValue] = useState('');
+
 
 	const onAllClickHandler = () => filterButtonClick("All");
 	const onActiveClickHandler = () => filterButtonClick("Active");
@@ -44,8 +42,14 @@ export const ToDoList = (props: ToDoListType) => {
 	return (
 		<div>
 			<h3>{props.title}</h3>
-			<input/>
-			<button>+</button>
+			<input value={inputValue} onChange={(event)=>{
+				setInputValue(event.currentTarget.value);
+			}
+			}/>
+			<button onClick={()=>{
+				addTaskFunction(inputValue)
+				setInputValue("")
+			}}>+</button>
 			<ul>
 				{filteredTasks.map((el) => {
 					const onRemoveHandler = () => removeTaskFunction(el.id);
