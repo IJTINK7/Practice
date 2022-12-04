@@ -4,7 +4,6 @@ import {v1} from "uuid";
 type ToDoListType = {
 	title: string;
 }
-
 export const ToDoList = (props: ToDoListType) => {
 	let [tasks, setTasks] = useState([
 		{id: v1(), checked: true, name: "HTML"},
@@ -15,11 +14,6 @@ export const ToDoList = (props: ToDoListType) => {
 	]);
 	const removeTaskFunction = (taskId: string) => {
 		setTasks(tasks.filter(el => el.id !== taskId));
-	}
-	const addTaskFunction =(task:string) =>{
-		let newTask = {id: v1(), checked: false, name: task};
-		const newArray = [newTask, ...tasks];
-		setTasks(newArray);
 	}
 
 	let [filterButtonValue, setFilterButtonValue] = useState('All');
@@ -33,8 +27,6 @@ export const ToDoList = (props: ToDoListType) => {
 	if (filterButtonValue === "Completed") {
 		filteredTasks = tasks.filter(el => el.checked)
 	}
-	 let [inputValue, setInputValue] = useState('');
-
 
 	const onAllClickHandler = () => filterButtonClick("All");
 	const onActiveClickHandler = () => filterButtonClick("Active");
@@ -42,14 +34,8 @@ export const ToDoList = (props: ToDoListType) => {
 	return (
 		<div>
 			<h3>{props.title}</h3>
-			<input value={inputValue} onChange={(event)=>{
-				setInputValue(event.currentTarget.value);
-			}
-			}/>
-			<button onClick={()=>{
-				addTaskFunction(inputValue)
-				setInputValue("")
-			}}>+</button>
+			<input/>
+			<button>+</button>
 			<ul>
 				{filteredTasks.map((el) => {
 					const onRemoveHandler = () => removeTaskFunction(el.id);
