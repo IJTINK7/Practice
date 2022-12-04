@@ -37,26 +37,15 @@ export const ToDoList = (props: ToDoListType) => {
 	const onNewTitleChangeHandler = (e:ChangeEvent<HTMLInputElement> ) => {
 		setNewTaskTitle(e.currentTarget.value)
 	}
-	const onKeyPressHandler=(e: KeyboardEvent<HTMLInputElement>)=>{
-		if(e.charCode === 13){
-				addTask();
-		}
-	}
-	const addTask = () =>{
-		addTaskFunction(newTaskTitle);
-		setNewTaskTitle("")
-	}
+
 	const onAllClickHandler = () => filterButtonClick("All");
 	const onActiveClickHandler = () => filterButtonClick("Active");
 	const onCompletedClickHandler = () => filterButtonClick("Completed");
 	return (
 		<div>
 			<h3>{props.title}</h3>
-			<input value={newTaskTitle}
-				   onChange={onNewTitleChangeHandler}
-				   onKeyPress={onKeyPressHandler}
-			/>
-			<button onClick={addTask}>+</button>
+			<input/>
+			<button>+</button>
 			<ul>
 				{filteredTasks.map((el) => {
 					const onRemoveHandler = () => removeTaskFunction(el.id);
