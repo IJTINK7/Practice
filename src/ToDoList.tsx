@@ -40,10 +40,17 @@ export const ToDoList = (props: ToDoListType) => {
 	return (
 		<div>
 			<h3>{props.title}</h3>
-			<input value={inputValue} onChange={(event)=>{
-				setInputValue(event.currentTarget.value);
-			}
-			}/>
+			<input value={inputValue}
+				   onChange={(event)=>{
+					   setInputValue(event.currentTarget.value);
+				   }}
+				   onKeyPress={(event)=>{
+					   if(event.charCode === 13){
+						   addTaskFunction(inputValue);
+						   setInputValue('')
+					   }
+				   }}
+			/>
 			<button onClick={()=>{
 				addTaskFunction(inputValue);
 				setInputValue('')
