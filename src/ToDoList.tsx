@@ -15,8 +15,8 @@ export const ToDoList = (props: ToDoListType) => {
 	const removeTaskFunction = (taskId: string) => {
 		setTasks(tasks.filter(el => el.id !== taskId));
 	}
-	const addTaskFunction = () => {
-		const newTask = {id: v1(), checked: false, name: "New Task"};
+	const addTaskFunction = (task: string) => {
+		const newTask = {id: v1(), checked: false, name: task};
 		const newArray = [newTask, ...tasks];
 		setTasks(newArray);
 	}
@@ -44,7 +44,11 @@ export const ToDoList = (props: ToDoListType) => {
 				setInputValue(event.currentTarget.value);
 			}
 			}/>
-			<button onClick={addTaskFunction}>+</button>
+			<button onClick={()=>{
+				addTaskFunction(inputValue);
+				setInputValue('')
+			}
+			}>+</button>
 			<ul>
 				{filteredTasks.map((el) => {
 					const onRemoveHandler = () => removeTaskFunction(el.id);
