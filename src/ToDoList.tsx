@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 import {v1} from "uuid";
 
 type ToDoListType = {
@@ -37,25 +37,25 @@ export const ToDoList = (props: ToDoListType) => {
 	const onAllClickHandler = () => filterButtonClick("All");
 	const onActiveClickHandler = () => filterButtonClick("Active");
 	const onCompletedClickHandler = () => filterButtonClick("Completed");
+	const addNewTask =()=>{
+		addTaskFunction(inputValue);
+		setInputValue('')
+	}
+	const onNewChangeTitleHandler=(event:ChangeEvent<HTMLInputElement>)=>setInputValue(event.currentTarget.value);
+	const onKeyPressHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+		if(event.charCode === 13){
+			addNewTask()
+		}
+	}
+
 	return (
 		<div>
 			<h3>{props.title}</h3>
 			<input value={inputValue}
-				   onChange={(event)=>{
-					   setInputValue(event.currentTarget.value);
-				   }}
-				   onKeyPress={(event)=>{
-					   if(event.charCode === 13){
-						   addTaskFunction(inputValue);
-						   setInputValue('')
-					   }
-				   }}
+				   onChange={onNewChangeTitleHandler}
+				   onKeyPress={onKeyPressHandler}
 			/>
-			<button onClick={()=>{
-				addTaskFunction(inputValue);
-				setInputValue('')
-			}
-			}>+</button>
+			<button onClick={addNewTask}>+</button>
 			<ul>
 				{filteredTasks.map((el) => {
 					const onRemoveHandler = () => removeTaskFunction(el.id);
