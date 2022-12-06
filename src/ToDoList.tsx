@@ -16,12 +16,11 @@ export const ToDoList = (props: ToDoListType) => {
 		setTasks(tasks.filter(el => el.id !== taskId));
 	}
 	const addTaskFunction = (task: string) => {
-		if (task.trim() === ""){
-			return;
+		if (task.trim() !== "") {
+			const newTask = {id: v1(), checked: false, name: task.trim()};
+			const newArray = [newTask, ...tasks];
+			setTasks(newArray);
 		}
-		const newTask = {id: v1(), checked: false, name: task};
-		const newArray = [newTask, ...tasks];
-		setTasks(newArray);
 	}
 
 	let [filterButtonValue, setFilterButtonValue] = useState('All');
