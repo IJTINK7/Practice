@@ -16,6 +16,9 @@ export const ToDoList = (props: ToDoListType) => {
 		setTasks(tasks.filter(el => el.id !== taskId));
 	}
 	const addTaskFunction = (task: string) => {
+		if (task.trim() === ""){
+			return;
+		}
 		const newTask = {id: v1(), checked: false, name: task};
 		const newArray = [newTask, ...tasks];
 		setTasks(newArray);
