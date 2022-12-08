@@ -1,5 +1,5 @@
 import React from "react";
-const User = ()=>{
+export const User = ()=>{
 	return(
 		<div>
 			<button>Delete</button>

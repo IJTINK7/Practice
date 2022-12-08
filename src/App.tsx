@@ -9,6 +9,8 @@ import {Currency} from "./Currency";
 import {NewComponent} from "./NewComponent";
 import {Input} from "./Input";
 import {OnOff} from "./OnOff/OnOff";
+import {User} from "./callBack/callBack";
+
 
 
 function App() {
@@ -29,6 +31,7 @@ function App() {
 			<NewComponent/>
 			<Input/>
 			<OnOff isActive={true}/>
+			<User/>
 		</div>
 	)
 }
