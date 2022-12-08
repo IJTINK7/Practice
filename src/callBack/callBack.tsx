@@ -9,10 +9,13 @@ export const User = ()=>{
 	const nameChanged = () => {
 		console.log("Name has been changed")
 	}
+	const changeFocus = () => {
+		console.log("Focus has been lost")
+	}
 	return(
 
 		<div>
-			<textarea onChange={nameChanged}>Name</textarea>
+			<textarea onChange={nameChanged} onBlur={changeFocus}>Name</textarea>
 			<button onClick={deleteUser}>Delete</button>
 			<button onClick={saveUser}>Save</button>
 		</div>
