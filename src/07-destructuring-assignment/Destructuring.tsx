@@ -5,14 +5,18 @@ type PropsType={
 	man: ManType;
 }
 export const ManComponent = (props:PropsType)=>{
-	// const {title} = props;
-	// const {name} = props.man;
-	const {title, man:{name}} = props;
+	// const {title} = props; 1
+	// const {name} = props.man;1
+	// const {title, man:{name}} = props; 2
+	const {title, man} = props;
 	return(
 		<div>
 			<h1>{title}</h1>
 			<hr/>
-			<div>{name}</div>
+			<div>
+				{/*{name} 2*/}
+				{man.name}
+			</div>
 		</div>
 	);
 }
