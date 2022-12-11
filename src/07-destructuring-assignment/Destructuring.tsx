@@ -5,8 +5,9 @@ type PropsType={
 	man: ManType;
 }
 export const ManComponent = (props:PropsType)=>{
-	const {title} = props;
-	const {name} = props.man;
+	// const {title} = props;
+	// const {name} = props.man;
+	const {title, man:{name}} = props;
 	return(
 		<div>
 			<h1>{title}</h1>
