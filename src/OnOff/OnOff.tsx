@@ -1,8 +1,8 @@
 import React, {useState} from "react";
-type OnOffActiveType ={
-	isActive: boolean;
-}
-export const OnOff = (props: OnOffActiveType) =>{
+// type OnOffActiveType ={
+// 	isActive: boolean;
+// }
+export const OnOff = () =>{
 	const [on, setOn] = useState(false);
 
 	const container ={
