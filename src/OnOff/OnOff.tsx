@@ -12,7 +12,7 @@ export const OnOff = (props: OnOffActiveType) =>{
 		border: "3px black solid",
 		marginRight: "10px",
 		marginBottom: "10px",
-		backgroundColor: "green",
+		backgroundColor: props.isActive ? "green" : "white",
 	};
 	const offStyle = {
 		width: "50px",
@@ -20,7 +20,7 @@ export const OnOff = (props: OnOffActiveType) =>{
 		border: "3px black solid",
 		marginRight: "10px",
 		marginBottom: "10px",
-		backgroundColor: "red",
+		backgroundColor: props.isActive ? "white" : "red",
 	};
 
 	const bulbStyle = {
@@ -28,7 +28,7 @@ export const OnOff = (props: OnOffActiveType) =>{
 		height: "50px",
 		borderRadius: "50%",
 		border: "3px black solid",
-		backgroundColor: "yellow",
+		backgroundColor: props.isActive ? "green" : "red",
 	};
 	return(
 		<div style={container}>
