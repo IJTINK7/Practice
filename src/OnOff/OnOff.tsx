@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 type OnOffActiveType ={
 	isActive: boolean;
 }
 export const OnOff = (props: OnOffActiveType) =>{
+	const [on, setOn] = useState(false);
+
 	const container ={
 		display:"flex"
 	}
@@ -12,7 +14,7 @@ export const OnOff = (props: OnOffActiveType) =>{
 		border: "3px black solid",
 		marginRight: "10px",
 		marginBottom: "10px",
-		backgroundColor: props.isActive ? "green" : "white",
+		backgroundColor: on ? "green" : "white",
 	};
 	const offStyle = {
 		width: "50px",
@@ -20,7 +22,7 @@ export const OnOff = (props: OnOffActiveType) =>{
 		border: "3px black solid",
 		marginRight: "10px",
 		marginBottom: "10px",
-		backgroundColor: props.isActive ? "white" : "red",
+		backgroundColor: on ? "white" : "red",
 	};
 
 	const bulbStyle = {
@@ -28,12 +30,14 @@ export const OnOff = (props: OnOffActiveType) =>{
 		height: "50px",
 		borderRadius: "50%",
 		border: "3px black solid",
-		backgroundColor: props.isActive ? "green" : "red",
+		backgroundColor: on ? "green" : "red",
 	};
+
+
 	return(
 		<div style={container}>
-			<div style={onStyle}>On</div>
-			<div style={offStyle}>Off</div>
+			<div style={onStyle} onClick={()=>{setOn(true)}}>On</div>
+			<div style={offStyle} onClick={()=>{setOn(false)}}>Off</div>
 			<div style={bulbStyle}></div>
 		</div>
 	);

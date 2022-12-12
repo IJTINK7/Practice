@@ -30,7 +30,7 @@ function App() {
 			<Counter/>
 			<NewComponent/>
 			<Input/>
-			<OnOff isActive={true}/>
+			<OnOff isActive={false}/>
 			<User/>
 		</div>
 	)
