@@ -12,7 +12,7 @@ export const Accordion = (props: AccordionType) => {
 			<AccordionTitle title={props.title}/>
 			<button onClick={()=>{
 				console.log(collapsed); setCollapsed(!collapsed)}}>Toggle</button>
-			<AccordionBody/>
+			{!collapsed && <AccordionBody/>}
 		</div>
 	);
 }
