@@ -11,6 +11,7 @@ import {Input} from "./Input";
 import {OnOff} from "./OnOff/OnOff";
 import {User} from "./callBack/callBack";
 import {Accordion} from "./Accordion/Accordion";
+import {UncontrolledRating} from "./Rating/UncontrolledRating";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
 			<OnOff/>
 			<User/>
 			<Accordion title={"Menu"} />
+			<UncontrolledRating/>
 		</div>
 	)
 }

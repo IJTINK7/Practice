@@ -1,16 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 
-type RatingPropsType = {
-	value: number;
-}
-export const UncontrolledRating = (props: RatingPropsType) => {
+export const UncontrolledRating = () => {
+	const [value, setValue] = useState(0)
 	return (
 		<div>
-			<Star isActive={props.value > 0}/>
-			<Star isActive={props.value > 1}/>
-			<Star isActive={props.value > 2}/>
-			<Star isActive={props.value > 3}/>
-			<Star isActive={props.value > 4}/>
+			<Star isActive={value > 0}/><button onClick={()=>{setValue(1)}}>1</button>
+			<Star isActive={value > 1}/><button onClick={()=>{setValue(2)}}>2</button>
+			<Star isActive={value > 2}/><button onClick={()=>{setValue(3)}}>3</button>
+			<Star isActive={value > 3}/><button onClick={()=>{setValue(4)}}>4</button>
+			<Star isActive={value > 4}/><button onClick={()=>{setValue(5)}}>5</button>
 		</div>
 	);
 }
