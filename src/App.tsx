@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {Greeting} from "./Greeting";
-import {Rating} from "./Rating";
+import {Rating} from "./Rating/Rating";
 import {ToDoList} from "./ToDoList";
 import {TestFilterComponent} from "./TestFilterComponent";
 import {Counter} from "./Counter";
