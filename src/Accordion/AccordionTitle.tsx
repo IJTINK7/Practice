@@ -1,9 +1,10 @@
 import React from "react";
-type AccordionTitleType={
-	title:string
+
+type AccordionTitleType = {
+	title: string
 }
-export const AccordionTitle =(props: AccordionTitleType) => {
-	return(
+export const AccordionTitle = (props: AccordionTitleType) => {
+	return (
 		<div>{props.title}</div>
 	);
 }

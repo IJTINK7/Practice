@@ -13,7 +13,6 @@ import {User} from "./callBack/callBack";
 import {Accordion} from "./Accordion/Accordion";
 
 
-
 function App() {
 	return (
 		<div className="App">
@@ -31,10 +30,10 @@ function App() {
 			<Counter/>
 			<NewComponent/>
 			<Input/>
-			<OnOff />
+			<OnOff/>
 			<User/>
-			<Accordion title={"Menu"} collapsed={false} />
-			<Accordion title={"Menu"} collapsed={true} />
+			<Accordion title={"Menu"} collapsed={false}/>
+			<Accordion title={"Menu"} collapsed={true}/>
 		</div>
 	)
 }

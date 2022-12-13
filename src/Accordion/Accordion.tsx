@@ -17,7 +17,7 @@ export const Accordion = (props: AccordionType) => {
 		return (
 			<div>
 				<AccordionTitle title={props.title}/>
-				<AccordionBody collapsed={props.collapsed}/>
+				<AccordionBody/>
 			</div>
 		);
 	}
