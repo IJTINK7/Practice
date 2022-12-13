@@ -10,7 +10,7 @@ import {NewComponent} from "./NewComponent";
 import {Input} from "./Input";
 import {OnOff} from "./OnOff/OnOff";
 import {User} from "./callBack/callBack";
-import {Accordion} from "./Accordion";
+import {Accordion} from "./Accordion/Accordion";
 
 
 
@@ -33,7 +33,7 @@ function App() {
 			<Input/>
 			<OnOff />
 			<User/>
-			<Accordion/>
+			<Accordion />
 		</div>
 	)
 }
