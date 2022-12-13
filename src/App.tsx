@@ -32,8 +32,7 @@ function App() {
 			<Input/>
 			<OnOff/>
 			<User/>
-			<Accordion title={"Menu"} collapsed={false}/>
-			<Accordion title={"Menu"} collapsed={true}/>
+			<Accordion title={"Menu"} />
 		</div>
 	)
 }
