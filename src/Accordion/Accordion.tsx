@@ -1,21 +1,15 @@
 import React from "react";
 import {AccordionTitle} from "./AccordionTitle";
 import {AccordionBody} from "./AccordionBody";
-// type AccordionType={
-// 	title: string;
-// 	collapsed: boolean
-// }
-export const Accordion = () =>{
-	// const [collapsed, setCollapsed] = useState(false)
+type AccordionType={
+	title: string;
+	collapsed: boolean
+}
+export const Accordion = (props:AccordionType) =>{
 	return(
 		<div>
-			<AccordionTitle title={"Menu"}/>
-			<AccordionBody />
+			<AccordionTitle title={props.title}/>
+			<AccordionBody collapsed={props.collapsed}/>
 		</div>
 	);
 }
-
-
-// <div>{props.title}</div>
-// <button onClick={()=>{setCollapsed(!collapsed)}}>Toggle</button>
-//
