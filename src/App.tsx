@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import {Greeting} from "./Greeting";
-import {Rating} from "./Rating/Rating";
+import {Rating, RatingValueType} from "./Rating/Rating";
 import {ToDoList} from "./ToDoList";
 import {TestFilterComponent} from "./TestFilterComponent";
 import {Counter} from "./Counter";
@@ -15,14 +15,13 @@ import {UncontrolledRating} from "./Rating/UncontrolledRating";
 
 
 function App() {
+	const [ratingValue, setRatingValue] = useState<RatingValueType>(0)
 	return (
 		<div className="App">
 			<Greeting/>
 			<ToDoList title={"What to learn?"}/>
 			<hr/>
-			<Rating value={3}/>
-			<Rating value={1}/>
-			<Rating value={4}/>
+			<Rating value={ratingValue} onClick={setRatingValue}/>
 			<hr/>
 			<Currency/>
 			<hr/>
