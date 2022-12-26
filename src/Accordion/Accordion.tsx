@@ -9,9 +9,7 @@ export const Accordion = (props: AccordionType) => {
 	const [collapsed, setCollapsed] = useState(false);
 	return (
 		<div>
-			<AccordionTitle title={props.title}/>
-			<button onClick={()=>{
-				console.log(collapsed); setCollapsed(!collapsed)}}>Toggle</button>
+			<AccordionTitle title={props.title} onClick={()=>{setCollapsed(!collapsed)}}/>
 			{!collapsed && <AccordionBody/>}
 		</div>
 	);

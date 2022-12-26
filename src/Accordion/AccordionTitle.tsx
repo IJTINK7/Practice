@@ -2,9 +2,10 @@ import React from "react";
 
 type AccordionTitleType = {
 	title: string
+	onClick: ()=> void
 }
 export const AccordionTitle = (props: AccordionTitleType) => {
 	return (
-		<div>{props.title}</div>
+		<div onClick={()=>{props.onClick()}}>{props.title}</div>
 	);
 }
