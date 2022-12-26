@@ -4,24 +4,18 @@ export const UncontrolledRating = () => {
 	const [value, setValue] = useState(0)
 	return (
 		<div>
-			<Star isActive={value > 0}/>
-			<Star isActive={value > 1}/>
-			<Star isActive={value > 2}/>
-			<Star isActive={value > 3}/>
-			<Star isActive={value > 4}/>
-			<div>
-				<button onClick={()=>{setValue(1)}}>1</button>
-				<button onClick={()=>{setValue(2)}}>2</button>
-				<button onClick={()=>{setValue(3)}}>3</button>
-				<button onClick={()=>{setValue(4)}}>4</button>
-				<button onClick={()=>{setValue(5)}}>5</button>
-			</div>
+			<Star isActive={value > 0} setValue={setValue}/>
+			<Star isActive={value > 1} setValue={setValue}/>
+			<Star isActive={value > 2} setValue={setValue}/>
+			<Star isActive={value > 3} setValue={setValue}/>
+			<Star isActive={value > 4} setValue={setValue}/>
 		</div>
 	);
 }
 type StarPropsType = {
 	isActive: boolean;
+	setValue: (value: 1 | 2 | 3 | 4 | 5)=>void;
 }
 const Star = (props: StarPropsType) => {
-	return props.isActive ? <span><b>Star </b></span> : <span>Star </span>
+	return <span onClick={()=>{props.setValue(5)}}>{props.isActive ? <b>Star </b> : "Star" }</span>
 }
