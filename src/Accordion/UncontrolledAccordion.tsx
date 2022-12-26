@@ -7,7 +7,7 @@ type AccordionType = {
 	collapsed: boolean;
 	onChange:()=>void;
 }
-export const Accordion = (props: AccordionType) => {
+export const UncontrolledAccordion = (props: AccordionType) => {
 	return (
 		<div>
 			<AccordionTitle title={props.title} onChange={props.onChange}/>

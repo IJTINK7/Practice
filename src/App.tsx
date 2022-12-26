@@ -12,10 +12,13 @@ import {OnOff} from "./OnOff/OnOff";
 import {User} from "./callBack/callBack";
 import {Accordion} from "./Accordion/Accordion";
 import {UncontrolledRating} from "./Rating/UncontrolledRating";
+import {UncontrolledAccordion} from "./Accordion/UncontrolledAccordion";
 
 
 function App() {
 	const [ratingValue, setRatingValue] = useState<RatingValueType>(0)
+	const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false);
+
 	return (
 		<div className="App">
 			<Greeting/>
@@ -32,8 +35,9 @@ function App() {
 			<Input/>
 			<OnOff/>
 			<User/>
-			<Accordion title={"Menu"} />
+			<Accordion title={"Menu"} collapsed={accordionCollapsed} onChange={()=>{setAccordionCollapsed(!accordionCollapsed)}} />
 			<UncontrolledRating/>
+			<UncontrolledAccordion title={"Burger"} collapsed={accordionCollapsed} onChange={()=>{setAccordionCollapsed(!accordionCollapsed)}}/>
 		</div>
 	)
 }
