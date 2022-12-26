@@ -23,13 +23,5 @@ type StarPropsType = {
 	isActive: boolean;
 }
 const Star = (props: StarPropsType) => {
-	if (props.isActive) {
-		return (
-			<span><b>Star </b></span>
-		);
-	} else {
-		return (
-			<span>Star </span>
-		);
-	}
+	return props.isActive ? <span><b>Star </b></span> : <span>Star </span>
 }
