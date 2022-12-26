@@ -13,11 +13,13 @@ import {User} from "./callBack/callBack";
 import {Accordion} from "./Accordion/Accordion";
 import {UncontrolledRating} from "./Rating/UncontrolledRating";
 import {UncontrolledAccordion} from "./Accordion/UncontrolledAccordion";
+import {UncontrolledOnOff} from "./OnOff/UncontrolledOnOff";
 
 
 function App() {
 	const [ratingValue, setRatingValue] = useState<RatingValueType>(0)
 	const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false);
+	const [switchOn, setSwitchOOn] = useState(false);
 
 	return (
 		<div className="App">
@@ -33,11 +35,12 @@ function App() {
 			<Counter/>
 			<NewComponent/>
 			<Input/>
-			<OnOff/>
+			<OnOff on={switchOn} onChange={(on)=>{setSwitchOOn(on)}}/>
 			<User/>
 			<Accordion title={"Menu"} collapsed={accordionCollapsed} onChange={()=>{setAccordionCollapsed(!accordionCollapsed)}} />
 			<UncontrolledRating/>
 			<UncontrolledAccordion title={"Burger"} collapsed={accordionCollapsed} onChange={()=>{setAccordionCollapsed(!accordionCollapsed)}}/>
+			<UncontrolledOnOff/>
 		</div>
 	)
 }
