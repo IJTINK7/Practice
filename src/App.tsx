@@ -42,7 +42,8 @@ function App() {
 			<UncontrolledRating/>
 			<UncontrolledAccordion title={"Burger"} collapsed={accordionCollapsed} onChange={()=>{setAccordionCollapsed(!accordionCollapsed)}}/>
 			<UncontrolledOnOff/>
-			<NewTodolist/>
+			<NewTodolist title={"What to learn"}/>
+			<NewTodolist title={"Movies"}/>
 		</div>
 	)
 }

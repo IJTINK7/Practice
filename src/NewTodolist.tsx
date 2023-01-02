@@ -1,14 +1,17 @@
 import React from "react";
 
-export const NewTodolist = () => {
+type TodolistType={
+	title: string;
+}
+
+export const NewTodolist = (props: TodolistType) => {
 	return (
 		<div>
-			<h3>What to learn</h3>
+			<h3>{props.title}</h3>
 			<div>
 				<input type="text"/>
 				<button>+</button>
 			</div>
-
 			<div>
 				<li><input type="checkbox" checked={true}/><span>HTML</span></li>
 				<li><input type="checkbox" checked={true}/><span>CSS</span></li>
