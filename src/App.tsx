@@ -14,6 +14,7 @@ import {Accordion} from "./Accordion/Accordion";
 import {UncontrolledRating} from "./Rating/UncontrolledRating";
 import {UncontrolledAccordion} from "./Accordion/UncontrolledAccordion";
 import {UncontrolledOnOff} from "./OnOff/UncontrolledOnOff";
+import {NewTodolist} from "./NewTodolist";
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
 			<UncontrolledRating/>
 			<UncontrolledAccordion title={"Burger"} collapsed={accordionCollapsed} onChange={()=>{setAccordionCollapsed(!accordionCollapsed)}}/>
 			<UncontrolledOnOff/>
+			<NewTodolist/>
 		</div>
 	)
 }
