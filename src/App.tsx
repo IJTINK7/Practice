@@ -24,7 +24,8 @@ function App() {
 	const tasks= [
 		{id: 1, title: "HTML", isDone: true},
 		{id: 2, title: "CSS", isDone: true},
-		{id: 3, title: "JS", isDone: true}
+		{id: 3, title: "JS", isDone: true},
+		{id: 4, title: "React", isDone: false}
 	];
 	const tasks1= [
 		{id: 1, title: "Avatar", isDone: true},
