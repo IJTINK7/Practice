@@ -28,8 +28,8 @@ function App() {
 		{id: 4, title: "React", isDone: false}
 	])
 
-	const removeTask =(taskID: number)=>{
-		let filteredTasks = tasks.filter(el=>el.id!== taskID);
+	const removeTask = (taskID: number) => {
+		let filteredTasks = tasks.filter(el => el.id !== taskID);
 		setTasks(filteredTasks)
 	}
 
@@ -47,13 +47,19 @@ function App() {
 			<Counter/>
 			<NewComponent/>
 			<Input/>
-			<OnOff on={switchOn} onChange={(on)=>{setSwitchOOn(on)}}/>
+			<OnOff on={switchOn} onChange={(on) => {
+				setSwitchOOn(on)
+			}}/>
 			<User/>
-			<Accordion title={"Menu"} collapsed={accordionCollapsed} onChange={()=>{setAccordionCollapsed(!accordionCollapsed)}} />
+			<Accordion title={"Menu"} collapsed={accordionCollapsed} onChange={() => {
+				setAccordionCollapsed(!accordionCollapsed)
+			}}/>
 			<UncontrolledRating/>
-			<UncontrolledAccordion title={"Burger"} collapsed={accordionCollapsed} onChange={()=>{setAccordionCollapsed(!accordionCollapsed)}}/>
+			<UncontrolledAccordion title={"Burger"} collapsed={accordionCollapsed} onChange={() => {
+				setAccordionCollapsed(!accordionCollapsed)
+			}}/>
 			<UncontrolledOnOff/>
-			<NewTodolist title={"What to learn"} tasks={tasks} removeTask ={removeTask}/>
+			<NewTodolist title={"What to learn"} tasks={tasks} removeTask={removeTask}/>
 		</div>
 	)
 }
