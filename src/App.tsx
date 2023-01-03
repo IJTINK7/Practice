@@ -27,11 +27,6 @@ function App() {
 		{id: 3, title: "JS", isDone: true},
 		{id: 4, title: "React", isDone: false}
 	];
-	const tasks1= [
-		{id: 1, title: "Avatar", isDone: true},
-		{id: 2, title: "Avengers", isDone: false},
-		{id: 3, title: "Titanic", isDone: true}
-	];
 
 	return (
 		<div className="App">
@@ -54,7 +49,6 @@ function App() {
 			<UncontrolledAccordion title={"Burger"} collapsed={accordionCollapsed} onChange={()=>{setAccordionCollapsed(!accordionCollapsed)}}/>
 			<UncontrolledOnOff/>
 			<NewTodolist title={"What to learn"} tasks={tasks}/>
-			<NewTodolist title={"James Cameron Movies"} tasks={tasks1}/>
 		</div>
 	)
 }
