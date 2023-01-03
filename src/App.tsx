@@ -26,11 +26,21 @@ function App() {
 		{id: 2, title: "CSS", isDone: true},
 		{id: 3, title: "JS", isDone: true},
 		{id: 4, title: "React", isDone: false}
-	])
+	]);
+
+	let [filter, setFilter] = useState("all");
+	let checkedTasks = tasks;
+	if(filter === "completed"){
+		checkedTasks = tasks.filter(el=>el.isDone)
+	}
+	if(filter === "active"){
+		checkedTasks = tasks.filter(el=>!el.isDone)
+	}
+
 
 	const removeTask = (taskID: number) => {
 		let filteredTasks = tasks.filter(el => el.id !== taskID);
-		setTasks(filteredTasks)
+		setTasks(filteredTasks);
 	}
 
 	return (
@@ -59,7 +69,7 @@ function App() {
 				setAccordionCollapsed(!accordionCollapsed)
 			}}/>
 			<UncontrolledOnOff/>
-			<NewTodolist title={"What to learn"} tasks={tasks} removeTask={removeTask}/>
+			<NewTodolist title={"What to learn"} tasks={checkedTasks} removeTask={removeTask}/>
 		</div>
 	)
 }
