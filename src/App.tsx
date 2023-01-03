@@ -21,12 +21,15 @@ function App() {
 	const [ratingValue, setRatingValue] = useState<RatingValueType>(0)
 	const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false);
 	const [switchOn, setSwitchOOn] = useState(false);
-	const tasks= [
+	let tasks= [
 		{id: 1, title: "HTML", isDone: true},
 		{id: 2, title: "CSS", isDone: true},
 		{id: 3, title: "JS", isDone: true},
 		{id: 4, title: "React", isDone: false}
 	];
+	const removeTask =(taskID: number)=>{
+		tasks = tasks.filter(el=>el.id!== taskID);
+	}
 
 	return (
 		<div className="App">
@@ -48,7 +51,7 @@ function App() {
 			<UncontrolledRating/>
 			<UncontrolledAccordion title={"Burger"} collapsed={accordionCollapsed} onChange={()=>{setAccordionCollapsed(!accordionCollapsed)}}/>
 			<UncontrolledOnOff/>
-			<NewTodolist title={"What to learn"} tasks={tasks}/>
+			<NewTodolist title={"What to learn"} tasks={tasks} removeTask ={removeTask}/>
 		</div>
 	)
 }
