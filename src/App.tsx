@@ -16,7 +16,7 @@ import {UncontrolledAccordion} from "./Accordion/UncontrolledAccordion";
 import {UncontrolledOnOff} from "./OnOff/UncontrolledOnOff";
 import {NewTodolist} from "./NewTodolist";
 
-
+export type FilterValuesType = "all" | "completed" | "active";
 function App() {
 	const [ratingValue, setRatingValue] = useState<RatingValueType>(0)
 	const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false);
@@ -28,7 +28,7 @@ function App() {
 		{id: 4, title: "React", isDone: false}
 	]);
 
-	let [filter, setFilter] = useState("all");
+	let [filter, setFilter] = useState<FilterValuesType>("all");
 	let checkedTasks = tasks;
 	if(filter === "completed"){
 		checkedTasks = tasks.filter(el=>el.isDone)
