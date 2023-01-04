@@ -5,6 +5,7 @@ type TodolistType = {
 	title: string;
 	tasks: Array<TasksType>;
 	removeTask: (taskID: string) => void;
+	addTask: ()=>void;
 	changeFilter: (value: FilterValuesType) => void;
 }
 export type TasksType = {
@@ -19,7 +20,7 @@ export const NewTodolist = (props: TodolistType) => {
 			<h3>{props.title}</h3>
 			<div>
 				<input type="text"/>
-				<button>+</button>
+				<button onClick={props.addTask}>+</button>
 			</div>
 			<div>
 				<ul>

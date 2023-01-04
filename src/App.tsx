@@ -33,6 +33,10 @@ function App() {
 		let filteredTasks = tasks.filter(el => el.id !== taskID);
 		setTasks(filteredTasks);
 	}
+	const addTask = ()=>{
+		let newTask = {id: v1(), title: "NewTask", isDone: false};
+		setTasks([newTask, ...tasks]);
+	}
 
 	let [filter, setFilter] = useState<FilterValuesType>("all");
 	let checkedTasks = tasks;
@@ -72,7 +76,7 @@ function App() {
 				setAccordionCollapsed(!accordionCollapsed)
 			}}/>
 			<UncontrolledOnOff/>
-			<NewTodolist title={"What to learn"} tasks={checkedTasks} removeTask={removeTask}
+			<NewTodolist title={"What to learn"} tasks={checkedTasks} removeTask={removeTask} addTask={addTask}
 						 changeFilter={changeFilter}/>
 		</div>
 	)
