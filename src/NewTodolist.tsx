@@ -1,11 +1,11 @@
 import React from "react";
 
-type TodolistType = {
+ type TodolistType = {
 	title: string;
 	tasks: Array<TasksType>;
 	removeTask: (taskID: number) => void;
 }
-type TasksType = {
+export type TasksType = {
 	id: number;
 	title: string;
 	isDone: boolean;

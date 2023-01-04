@@ -14,14 +14,14 @@ import {Accordion} from "./Accordion/Accordion";
 import {UncontrolledRating} from "./Rating/UncontrolledRating";
 import {UncontrolledAccordion} from "./Accordion/UncontrolledAccordion";
 import {UncontrolledOnOff} from "./OnOff/UncontrolledOnOff";
-import {NewTodolist} from "./NewTodolist";
+import {NewTodolist, TasksType} from "./NewTodolist";
 
 export type FilterValuesType = "all" | "completed" | "active";
 function App() {
 	const [ratingValue, setRatingValue] = useState<RatingValueType>(0)
 	const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false);
 	const [switchOn, setSwitchOOn] = useState(false);
-	const [tasks, setTasks] = useState([
+	const [tasks, setTasks] = useState<Array<TasksType>>([
 		{id: 1, title: "HTML", isDone: true},
 		{id: 2, title: "CSS", isDone: true},
 		{id: 3, title: "JS", isDone: true},
