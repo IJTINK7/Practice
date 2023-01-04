@@ -17,6 +17,7 @@ import {UncontrolledOnOff} from "./OnOff/UncontrolledOnOff";
 import {NewTodolist, TasksType} from "./NewTodolist";
 
 export type FilterValuesType = "all" | "completed" | "active";
+
 function App() {
 	const [ratingValue, setRatingValue] = useState<RatingValueType>(0)
 	const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false);
@@ -27,20 +28,21 @@ function App() {
 		{id: 3, title: "JS", isDone: true},
 		{id: 4, title: "React", isDone: false}
 	]);
-
-	let [filter, setFilter] = useState<FilterValuesType>("all");
-	let checkedTasks = tasks;
-	if(filter === "completed"){
-		checkedTasks = tasks.filter(el=>el.isDone)
-	}
-	if(filter === "active"){
-		checkedTasks = tasks.filter(el=>!el.isDone)
-	}
-
-
 	const removeTask = (taskID: number) => {
 		let filteredTasks = tasks.filter(el => el.id !== taskID);
 		setTasks(filteredTasks);
+	}
+
+	let [filter, setFilter] = useState<FilterValuesType>("all");
+	let checkedTasks = tasks;
+	if (filter === "completed") {
+		checkedTasks = tasks.filter(el => el.isDone)
+	}
+	if (filter === "active") {
+		checkedTasks = tasks.filter(el => !el.isDone)
+	}
+	const changeFilter = (value: FilterValuesType) => {
+		setFilter(value);
 	}
 
 	return (
@@ -69,7 +71,8 @@ function App() {
 				setAccordionCollapsed(!accordionCollapsed)
 			}}/>
 			<UncontrolledOnOff/>
-			<NewTodolist title={"What to learn"} tasks={checkedTasks} removeTask={removeTask}/>
+			<NewTodolist title={"What to learn"} tasks={checkedTasks} removeTask={removeTask}
+						 changeFilter={changeFilter}/>
 		</div>
 	)
 }
