@@ -4,11 +4,11 @@ import {FilterValuesType} from "./App";
 type TodolistType = {
 	title: string;
 	tasks: Array<TasksType>;
-	removeTask: (taskID: number) => void;
+	removeTask: (taskID: string) => void;
 	changeFilter: (value: FilterValuesType) => void;
 }
 export type TasksType = {
-	id: number;
+	id: string;
 	title: string;
 	isDone: boolean;
 }

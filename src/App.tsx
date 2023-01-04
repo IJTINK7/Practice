@@ -15,6 +15,7 @@ import {UncontrolledRating} from "./Rating/UncontrolledRating";
 import {UncontrolledAccordion} from "./Accordion/UncontrolledAccordion";
 import {UncontrolledOnOff} from "./OnOff/UncontrolledOnOff";
 import {NewTodolist, TasksType} from "./NewTodolist";
+import {v1} from "uuid";
 
 export type FilterValuesType = "all" | "completed" | "active";
 
@@ -23,12 +24,12 @@ function App() {
 	const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false);
 	const [switchOn, setSwitchOOn] = useState(false);
 	const [tasks, setTasks] = useState<Array<TasksType>>([
-		{id: 1, title: "HTML", isDone: true},
-		{id: 2, title: "CSS", isDone: true},
-		{id: 3, title: "JS", isDone: true},
-		{id: 4, title: "React", isDone: false}
+		{id: v1(), title: "HTML", isDone: true},
+		{id: v1(), title: "CSS", isDone: true},
+		{id: v1(), title: "JS", isDone: true},
+		{id: v1(), title: "React", isDone: false}
 	]);
-	const removeTask = (taskID: number) => {
+	const removeTask = (taskID: string) => {
 		let filteredTasks = tasks.filter(el => el.id !== taskID);
 		setTasks(filteredTasks);
 	}
