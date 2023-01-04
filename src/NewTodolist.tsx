@@ -1,11 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import {FilterValuesType} from "./App";
 
 type TodolistType = {
 	title: string;
 	tasks: Array<TasksType>;
 	removeTask: (taskID: string) => void;
-	addTask: ()=>void;
+	addTask: (newTaskName:string)=>void;
 	changeFilter: (value: FilterValuesType) => void;
 }
 export type TasksType = {
@@ -15,12 +15,26 @@ export type TasksType = {
 }
 
 export const NewTodolist = (props: TodolistType) => {
+	const [newTaskTitle, setNewTaskTitle] = useState('');
 	return (
 		<div>
 			<h3>{props.title}</h3>
 			<div>
-				<input type="text"/>
-				<button onClick={props.addTask}>+</button>
+				<input type="text" value={newTaskTitle}
+					   onChange={(e)=>{setNewTaskTitle(e.currentTarget.value)}}
+					   onKeyPress={(e)=>{
+						   if(e.charCode === 13){
+							   props.addTask(newTaskTitle);
+							   setNewTaskTitle('')
+						   }
+					   }}
+				/>
+				<button onClick={()=>{
+					if(newTaskTitle !== ""){
+						props.addTask(newTaskTitle);
+						setNewTaskTitle('')
+					}
+				}}>+</button>
 			</div>
 			<div>
 				<ul>
