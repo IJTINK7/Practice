@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 import {FilterValuesType} from "./App";
 
 type TodolistType = {
@@ -16,25 +16,32 @@ export type TasksType = {
 
 export const NewTodolist = (props: TodolistType) => {
 	const [newTaskTitle, setNewTaskTitle] = useState('');
+	const onChangeHandler=(e:ChangeEvent<HTMLInputElement>)=>{
+		setNewTaskTitle(e.currentTarget.value)
+	}
+	const onKeyPressHandler=(e:KeyboardEvent<HTMLInputElement>)=>{
+		if(e.ctrlKey && e.charCode === 13){
+			addTask();
+		}
+	}
+	const addTask=()=>{
+		if(newTaskTitle !== ""){
+			props.addTask(newTaskTitle);
+			setNewTaskTitle('')
+		}
+	}
+	const onAllClickFilter=()=> props.changeFilter('all');
+	const onActiveClickFilter=()=> props.changeFilter('active');
+	const onCompletedClickFilter=()=> props.changeFilter('completed');
 	return (
 		<div>
 			<h3>{props.title}</h3>
 			<div>
 				<input type="text" value={newTaskTitle}
-					   onChange={(e)=>{setNewTaskTitle(e.currentTarget.value)}}
-					   onKeyPress={(e)=>{
-						   if(e.ctrlKey && e.charCode === 13){
-							   props.addTask(newTaskTitle);
-							   setNewTaskTitle('')
-						   }
-					   }}
+					   onChange={onChangeHandler}
+					   onKeyPress={onKeyPressHandler}
 				/>
-				<button onClick={()=>{
-					if(newTaskTitle !== ""){
-						props.addTask(newTaskTitle);
-						setNewTaskTitle('')
-					}
-				}}>+</button>
+				<button onClick={addTask}>+</button>
 			</div>
 			<div>
 				<ul>
@@ -50,18 +57,9 @@ export const NewTodolist = (props: TodolistType) => {
 				</ul>
 			</div>
 			<div>
-				<button onClick={() => {
-					props.changeFilter('all')
-				}}>All
-				</button>
-				<button onClick={() => {
-					props.changeFilter('active')
-				}}>Active
-				</button>
-				<button onClick={() => {
-					props.changeFilter('completed')
-				}}>Completed
-				</button>
+				<button onClick={onAllClickFilter}>All</button>
+				<button onClick={onActiveClickFilter}>Active</button>
+				<button onClick={onCompletedClickFilter}>Completed</button>
 			</div>
 		</div>
 	);
