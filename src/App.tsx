@@ -43,7 +43,7 @@ function App() {
 		if(task){
 			task.isDone = isDone;
 		}
-		setTasks(tasks)
+		setTasks([...tasks])
 	}
 
 	let [filter, setFilter] = useState<FilterValuesType>("all");
