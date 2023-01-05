@@ -17,10 +17,13 @@ export type TasksType = {
 
 export const NewTodolist = (props: TodolistType) => {
 	const [newTaskTitle, setNewTaskTitle] = useState('');
+	const [error, setError] = useState<string | null>(null);
+
 	const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
 		setNewTaskTitle(e.currentTarget.value)
 	}
 	const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+		setError(null)
 		if (e.ctrlKey && e.charCode === 13) {
 			addTask();
 		}
@@ -29,6 +32,8 @@ export const NewTodolist = (props: TodolistType) => {
 		if (newTaskTitle.trim() !== "") {
 			props.addTask(newTaskTitle.trim());
 			setNewTaskTitle('')
+		}else{
+			setError("Field is required");
 		}
 	}
 	const onAllClickFilter = () => props.changeFilter('all');
@@ -39,11 +44,14 @@ export const NewTodolist = (props: TodolistType) => {
 		<div>
 			<h3>{props.title}</h3>
 			<div>
-				<input type="text" value={newTaskTitle}
+				<input type="text"
+					   value={newTaskTitle}
+					   className={error ? "error" : ""}
 					   onChange={onChangeHandler}
 					   onKeyPress={onKeyPressHandler}
 				/>
 				<button onClick={addTask}>+</button>
+				{error && <div className="error-message">{error}</div>}
 			</div>
 			<div>
 				<ul>
