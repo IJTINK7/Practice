@@ -84,7 +84,7 @@ function App() {
 				setAccordionCollapsed(!accordionCollapsed)
 			}}/>
 			<UncontrolledOnOff/>
-			<NewTodolist title={"What to learn"} tasks={checkedTasks} removeTask={removeTask} addTask={addTask} changeFilter={changeFilter} changeStatus={changeStatus}/>
+			<NewTodolist title={"What to learn"} tasks={checkedTasks} removeTask={removeTask} addTask={addTask} changeFilter={changeFilter} changeStatus={changeStatus} filter={filter}/>
 		</div>
 	)
 }
