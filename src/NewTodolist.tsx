@@ -5,10 +5,10 @@ type TodolistType = {
 	title: string;
 	id: string;
 	tasks: Array<TasksType>;
-	removeTask: (taskID: string) => void;
-	addTask: (newTaskName: string) => void;
+	removeTask: (taskID: string, todolistId:string) => void;
+	addTask: (newTaskName: string, todolistId:string) => void;
 	changeFilter: (value: FilterValuesType, todolistId: string) => void;
-	changeStatus: (taskID: string, isDone:boolean) => void;
+	changeStatus: (taskID: string, isDone:boolean, todolistId:string) => void;
 	filter: FilterValuesType;
 }
 export type TasksType = {
@@ -32,7 +32,7 @@ export const NewTodolist = (props: TodolistType) => {
 	}
 	const addTask = () => {
 		if (newTaskTitle.trim() !== "") {
-			props.addTask(newTaskTitle.trim());
+			props.addTask(newTaskTitle.trim(), props.id);
 			setNewTaskTitle('')
 		}else{
 			setError("Field is required");
@@ -58,8 +58,8 @@ export const NewTodolist = (props: TodolistType) => {
 			<div>
 				<ul>
 					{props.tasks.map((el) => {
-						const onRemoveHandler = () => props.removeTask(el.id);
-						const onChangeCheckBoxHandler = (e: ChangeEvent<HTMLInputElement>) => props.changeStatus(el.id, e.currentTarget.checked);
+						const onRemoveHandler = () => props.removeTask(el.id, props.id );
+						const onChangeCheckBoxHandler = (e: ChangeEvent<HTMLInputElement>) => props.changeStatus(el.id, e.currentTarget.checked, props.id);
 						return <li key={el.id} className={el.isDone ? "is-done" : ""}>
 							<input type="checkbox"
 								   checked={el.isDone}

@@ -14,7 +14,7 @@ import './App.css';
 // import {UncontrolledRating} from "./Rating/UncontrolledRating";
 // import {UncontrolledAccordion} from "./Accordion/UncontrolledAccordion";
 // import {UncontrolledOnOff} from "./OnOff/UncontrolledOnOff";
-import {NewTodolist, TasksType} from "./NewTodolist";
+import {NewTodolist} from "./NewTodolist";
 import {v1} from "uuid";
 
 export type FilterValuesType = "all" | "completed" | "active";
@@ -28,27 +28,26 @@ function App() {
 	// const [ratingValue, setRatingValue] = useState<RatingValueType>(0)
 	// const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false);
 	// const [switchOn, setSwitchOOn] = useState(false);
-	const [tasks, setTasks] = useState<Array<TasksType>>([
-		{id: v1(), title: "HTML", isDone: true},
-		{id: v1(), title: "CSS", isDone: true},
-		{id: v1(), title: "JS", isDone: true},
-		{id: v1(), title: "React", isDone: false}
-	]);
-	const removeTask = (taskID: string) => {
-		let filteredTasks = tasks.filter(el => el.id !== taskID);
-		setTasks(filteredTasks);
+
+	const removeTask = (taskID: string, todolistId:string) => {
+		let tasks = tasksObj[todolistId];
+		tasksObj[todolistId] = tasks.filter(el => el.id !== taskID);
+		setTasksObj({...tasksObj});
 	}
-	const addTask = (newTaskName: string) => {
+	const addTask = (newTaskName: string, todolistId:string) => {
 		let newTask = {id: v1(), title: newTaskName, isDone: false};
-		setTasks([newTask, ...tasks]);
+		let tasks = tasksObj[todolistId];
+		tasksObj[todolistId] = [newTask, ...tasks];
+		setTasksObj({...tasksObj});
 	}
 
-	const changeStatus=(taskID: string, isDone:boolean)=>{
+	const changeStatus=(taskID: string, isDone:boolean, todolistId:string)=>{
+		let tasks = tasksObj[todolistId];
 		let task = tasks.find(el=>el.id === taskID)
 		if(task){
 			task.isDone = isDone;
+			setTasksObj({...tasksObj});
 		}
-		setTasks([...tasks])
 	}
 
 	const changeFilter = (value: FilterValuesType, todolistId: string) => {
@@ -58,10 +57,25 @@ function App() {
 			setTodoLists([...todoLists]);
 		}
 	}
+	let todolistId1 = v1();
+	let todolistId2 = v1();
+
 	let [todoLists, setTodoLists] = useState<Array<TodolistType>>([
-		{id:v1(), title: "What to learn", filter: "active"},
-		{id:v1(), title: "What to buy", filter: "completed"},
+		{id:todolistId1, title: "What to learn", filter: "active"},
+		{id:todolistId2, title: "What to buy", filter: "completed"},
 	]);
+	let [tasksObj, setTasksObj] = useState({
+		[todolistId1]: [
+			{id: v1(), title: "HTML", isDone: true},
+			{id: v1(), title: "CSS", isDone: true},
+			{id: v1(), title: "JS", isDone: true},
+			{id: v1(), title: "React", isDone: false}
+		],
+		[todolistId2]: [
+			{id: v1(), title: "Book", isDone: false},
+			{id: v1(), title: "Milk", isDone: true},
+		]
+	});
 	return (
 		<div className="App">
 			{/*<Greeting/>*/}
@@ -90,12 +104,12 @@ function App() {
 			{/*<UncontrolledOnOff/>*/}
 			{
 				todoLists.map((el)=>{
-					let checkedTasks = tasks;
+					let checkedTasks = tasksObj[el.id];
 					if (el.filter === "completed") {
-						checkedTasks = tasks.filter(el => el.isDone)
+						checkedTasks = checkedTasks.filter(el => el.isDone)
 					}
 					if (el.filter === "active") {
-						checkedTasks = tasks.filter(el => !el.isDone)
+						checkedTasks = checkedTasks.filter(el => !el.isDone)
 					}
 					return <NewTodolist title={el.title}
 										key={el.id}
