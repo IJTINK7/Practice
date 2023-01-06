@@ -51,15 +51,17 @@ function App() {
 		setTasks([...tasks])
 	}
 
-	let [filter, setFilter] = useState<FilterValuesType>("all");
-
-	const changeFilter = (value: FilterValuesType) => {
-		setFilter(value);
+	const changeFilter = (value: FilterValuesType, todolistId: string) => {
+		let todolist = todoLists.find(el=>el.id === todolistId)
+		if(todolist){
+			todolist.filter = value;
+			setTodoLists([...todoLists]);
+		}
 	}
-	let todoLists: Array<TodolistType>=[
+	let [todoLists, setTodoLists] = useState<Array<TodolistType>>([
 		{id:v1(), title: "What to learn", filter: "active"},
 		{id:v1(), title: "What to buy", filter: "completed"},
-	]
+	]);
 	return (
 		<div className="App">
 			{/*<Greeting/>*/}
@@ -96,6 +98,8 @@ function App() {
 						checkedTasks = tasks.filter(el => !el.isDone)
 					}
 					return <NewTodolist title={el.title}
+										key={el.id}
+										id={el.id}
 										tasks={checkedTasks}
 										removeTask={removeTask}
 										addTask={addTask}

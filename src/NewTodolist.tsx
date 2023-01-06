@@ -3,10 +3,11 @@ import {FilterValuesType} from "./App";
 
 type TodolistType = {
 	title: string;
+	id: string;
 	tasks: Array<TasksType>;
 	removeTask: (taskID: string) => void;
 	addTask: (newTaskName: string) => void;
-	changeFilter: (value: FilterValuesType) => void;
+	changeFilter: (value: FilterValuesType, todolistId: string) => void;
 	changeStatus: (taskID: string, isDone:boolean) => void;
 	filter: FilterValuesType;
 }
@@ -37,9 +38,9 @@ export const NewTodolist = (props: TodolistType) => {
 			setError("Field is required");
 		}
 	}
-	const onAllClickFilter = () => props.changeFilter('all');
-	const onActiveClickFilter = () => props.changeFilter('active');
-	const onCompletedClickFilter = () => props.changeFilter('completed');
+	const onAllClickFilter = () => props.changeFilter('all', props.id);
+	const onActiveClickFilter = () => props.changeFilter('active', props.id);
+	const onCompletedClickFilter = () => props.changeFilter('completed', props.id);
 
 	return (
 		<div>
