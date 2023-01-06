@@ -52,13 +52,7 @@ function App() {
 	}
 
 	let [filter, setFilter] = useState<FilterValuesType>("all");
-	let checkedTasks = tasks;
-	if (filter === "completed") {
-		checkedTasks = tasks.filter(el => el.isDone)
-	}
-	if (filter === "active") {
-		checkedTasks = tasks.filter(el => !el.isDone)
-	}
+
 	const changeFilter = (value: FilterValuesType) => {
 		setFilter(value);
 	}
@@ -94,6 +88,13 @@ function App() {
 			{/*<UncontrolledOnOff/>*/}
 			{
 				todoLists.map((el)=>{
+					let checkedTasks = tasks;
+					if (el.filter === "completed") {
+						checkedTasks = tasks.filter(el => el.isDone)
+					}
+					if (el.filter === "active") {
+						checkedTasks = tasks.filter(el => !el.isDone)
+					}
 					return <NewTodolist title={el.title}
 										tasks={checkedTasks}
 										removeTask={removeTask}
