@@ -18,12 +18,20 @@ import {NewTodolist} from "./NewTodolist";
 import {v1} from "uuid";
 
 export type FilterValuesType = "all" | "completed" | "active";
-
-
+type TodolistsType ={
+	id: string;
+	title: string;
+	filter: FilterValuesType;
+}
 function App() {
 	// const [ratingValue, setRatingValue] = useState<RatingValueType>(0)
 	// const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false);
 	// const [switchOn, setSwitchOOn] = useState(false);
+
+	let [todolists, setTodolists] = useState<Array<TodolistsType>>([
+		{id: v1(), title: "What to learn", filter: "all"},
+		{id: v1(), title: "What to buy", filter: "all"},
+	]);
 
 	let [tasks, setTasks] = useState([
 		{id: v1(), title: "HTML&CSS", isDone: true},
@@ -51,7 +59,6 @@ function App() {
 		if (task) {
 			task.isDone = isDone;
 		}
-
 		setTasks([...tasks]);
 	}
 
