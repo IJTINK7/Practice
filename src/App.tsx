@@ -52,30 +52,13 @@ function App() {
 		],
 	});
 
-	// let [todolists, setTodolists] = useState<Array<TodolistsType>>([
-	// 	{id: v1(), title: "What to learn", filter: "all"},
-	// 	{id: v1(), title: "What to buy", filter: "completed"},
-	// 	{id: v1(), title: "What to watch", filter: "active"},
-	// 	{id: v1(), title: "What to sell", filter: "completed"},
-	// 	{id: v1(), title: "What to read", filter: "all"},
-	// ]);
-	//
-	// let [tasks, setTasks] = useState([
-	// 	{id: v1(), title: "HTML&CSS", isDone: true},
-	// 	{id: v1(), title: "JS", isDone: true},
-	// 	{id: v1(), title: "ReactJS", isDone: false},
-	// 	{id: v1(), title: "Rest API", isDone: false},
-	// 	{id: v1(), title: "GraphQL", isDone: false},
-	// ]);
-
 	function removeTask(todolistID: string, taskID: string) {
 		setTasks({...tasks, [todolistID]: tasks[todolistID].filter(el=> el.id !== taskID)})
 	}
 
-	function addTask(title: string) {
-		// let task = {id: v1(), title: title, isDone: false};
-		// let newTasks = [task, ...tasks];
-		// setTasks(newTasks);
+	function addTask(todolistID: string, title: string) {
+		let task = {id: v1(), title: title, isDone: false};
+		setTasks({...tasks, [todolistID]: [task, ...tasks[todolistID]]})
 	}
 
 	function changeStatus(taskId: string, isDone: boolean) {
