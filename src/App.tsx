@@ -71,6 +71,7 @@ function App() {
 	}
 	const removeTodolist =(todolistID: string)=>{
 		setTodolists(todolists.filter(el=>el.id !== todolistID))
+		delete tasks[todolistID];
 	}
 	return (
 		<div className="App">
