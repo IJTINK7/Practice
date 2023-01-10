@@ -68,9 +68,8 @@ function App() {
 	// 	{id: v1(), title: "GraphQL", isDone: false},
 	// ]);
 
-	function removeTask(id: string) {
-		// let filteredTasks = tasks.filter(t => t.id !== id);
-		// setTasks(filteredTasks);
+	function removeTask(todolistID: string, taskID: string) {
+		setTasks({...tasks, [todolistID]: tasks[todolistID].filter(el=> el.id !== taskID)})
 	}
 
 	function addTask(title: string) {
