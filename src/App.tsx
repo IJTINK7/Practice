@@ -31,6 +31,9 @@ function App() {
 	let [todolists, setTodolists] = useState<Array<TodolistsType>>([
 		{id: v1(), title: "What to learn", filter: "all"},
 		{id: v1(), title: "What to buy", filter: "all"},
+		{id: v1(), title: "What to watch", filter: "all"},
+		{id: v1(), title: "What to sell", filter: "all"},
+		{id: v1(), title: "What to read", filter: "all"},
 	]);
 
 	let [tasks, setTasks] = useState([
@@ -101,14 +104,17 @@ function App() {
 			{/*	setAccordionCollapsed(!accordionCollapsed)*/}
 			{/*}}/>*/}
 			{/*<UncontrolledOnOff/>*/}
-			<NewTodolist title="What to learn"
-						 tasks={tasksForTodolist}
-						 removeTask={removeTask}
-						 changeFilter={changeFilter}
-						 addTask={addTask}
-						 changeTaskStatus={changeStatus}
-						 filter={filter}
-			/>
+			{todolists.map(el=>{
+			return (
+				<NewTodolist title={el.title}
+							 tasks={tasksForTodolist}
+							 removeTask={removeTask}
+							 changeFilter={changeFilter}
+							 addTask={addTask}
+							 changeTaskStatus={changeStatus}
+							 filter={filter}
+				/>
+			)})}
 		</div>
 	)
 }
