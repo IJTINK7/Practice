@@ -27,40 +27,64 @@ function App() {
 	// const [ratingValue, setRatingValue] = useState<RatingValueType>(0)
 	// const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false);
 	// const [switchOn, setSwitchOOn] = useState(false);
+	let todolistID1 = v1();
+	let todolistID2 = v1();
 
 	let [todolists, setTodolists] = useState<Array<TodolistsType>>([
-		{id: v1(), title: "What to learn", filter: "all"},
-		{id: v1(), title: "What to buy", filter: "completed"},
-		{id: v1(), title: "What to watch", filter: "active"},
-		{id: v1(), title: "What to sell", filter: "completed"},
-		{id: v1(), title: "What to read", filter: "all"},
+		{id: todolistID1, title: "What to learn", filter: "all"},
+		{id: todolistID2, title: "What to buy", filter: "completed"},
 	]);
 
-	let [tasks, setTasks] = useState([
-		{id: v1(), title: "HTML&CSS", isDone: true},
-		{id: v1(), title: "JS", isDone: true},
-		{id: v1(), title: "ReactJS", isDone: false},
-		{id: v1(), title: "Rest API", isDone: false},
-		{id: v1(), title: "GraphQL", isDone: false},
-	]);
+	let [tasks, setTasks] = useState({
+		[todolistID1]:[
+			{id: v1(), title: "HTML&CSS", isDone: true},
+			{id: v1(), title: "JS", isDone: true},
+			{id: v1(), title: "ReactJS", isDone: false},
+			{id: v1(), title: "Rest API", isDone: false},
+			{id: v1(), title: "GraphQL", isDone: false},
+		],
+		[todolistID2]:[
+			{id: v1(), title: "HTML&CSS2", isDone: true},
+			{id: v1(), title: "JS2", isDone: true},
+			{id: v1(), title: "ReactJS2", isDone: false},
+			{id: v1(), title: "Rest API2", isDone: false},
+			{id: v1(), title: "GraphQL2", isDone: false},
+		],
+	});
+
+	// let [todolists, setTodolists] = useState<Array<TodolistsType>>([
+	// 	{id: v1(), title: "What to learn", filter: "all"},
+	// 	{id: v1(), title: "What to buy", filter: "completed"},
+	// 	{id: v1(), title: "What to watch", filter: "active"},
+	// 	{id: v1(), title: "What to sell", filter: "completed"},
+	// 	{id: v1(), title: "What to read", filter: "all"},
+	// ]);
+	//
+	// let [tasks, setTasks] = useState([
+	// 	{id: v1(), title: "HTML&CSS", isDone: true},
+	// 	{id: v1(), title: "JS", isDone: true},
+	// 	{id: v1(), title: "ReactJS", isDone: false},
+	// 	{id: v1(), title: "Rest API", isDone: false},
+	// 	{id: v1(), title: "GraphQL", isDone: false},
+	// ]);
 
 	function removeTask(id: string) {
-		let filteredTasks = tasks.filter(t => t.id !== id);
-		setTasks(filteredTasks);
+		// let filteredTasks = tasks.filter(t => t.id !== id);
+		// setTasks(filteredTasks);
 	}
 
 	function addTask(title: string) {
-		let task = {id: v1(), title: title, isDone: false};
-		let newTasks = [task, ...tasks];
-		setTasks(newTasks);
+		// let task = {id: v1(), title: title, isDone: false};
+		// let newTasks = [task, ...tasks];
+		// setTasks(newTasks);
 	}
 
 	function changeStatus(taskId: string, isDone: boolean) {
-		let task = tasks.find(t => t.id === taskId);
+		/*let task = tasks.find(t => t.id === taskId);
 		if (task) {
 			task.isDone = isDone;
 		}
-		setTasks([...tasks]);
+		setTasks([...tasks]);*/
 	}
 
 
@@ -94,13 +118,13 @@ function App() {
 			{/*}}/>*/}
 			{/*<UncontrolledOnOff/>*/}
 			{todolists.map(el=>{
-				let tasksForTodolist = tasks;
+				let tasksForTodolist = tasks[el.id];
 
 				if (el.filter === "active") {
-					tasksForTodolist = tasks.filter(t => !t.isDone);
+					tasksForTodolist = tasks[el.id].filter(t => !t.isDone);
 				}
 				if (el.filter === "completed") {
-					tasksForTodolist = tasks.filter(t => t.isDone);
+					tasksForTodolist = tasks[el.id].filter(t => t.isDone);
 				}
 
 				return (
