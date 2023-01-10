@@ -30,9 +30,9 @@ function App() {
 
 	let [todolists, setTodolists] = useState<Array<TodolistsType>>([
 		{id: v1(), title: "What to learn", filter: "all"},
-		{id: v1(), title: "What to buy", filter: "all"},
-		{id: v1(), title: "What to watch", filter: "all"},
-		{id: v1(), title: "What to sell", filter: "all"},
+		{id: v1(), title: "What to buy", filter: "completed"},
+		{id: v1(), title: "What to watch", filter: "active"},
+		{id: v1(), title: "What to sell", filter: "completed"},
 		{id: v1(), title: "What to read", filter: "all"},
 	]);
 
