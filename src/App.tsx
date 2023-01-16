@@ -81,7 +81,7 @@ function App() {
 		// setTasks([...tasks]);
 	}
 
-	let tasksForTodolist = tasks;
+	// let tasksForTodolist = tasks;
 
 	// if (filter === "active") {
 	// 	tasksForTodolist = tasks.filter(t => t.isDone === false);
@@ -91,7 +91,7 @@ function App() {
 	// }
 
 	function changeFilter(value: FilterValuesType) {
-		setFilter(value);
+		// setFilter(value);
 	}
 	return (
 		<div className="App">
@@ -120,6 +120,7 @@ function App() {
 			{/*}}/>*/}
 			{/*<UncontrolledOnOff/>*/}
 			{todolists.map((el)=> {
+				let tasksForTodolist = tasks[el.id];
 				return (<TodolistAssociativeArray
 					title={el.title}
 					tasks={tasksForTodolist}
