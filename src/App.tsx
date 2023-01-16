@@ -18,11 +18,12 @@ import {v1} from "uuid";
 import {TodolistAssociativeArray} from "./associativeArray/TodolistAssociativeArray";
 
 export type FilterValuesType = "all" | "completed" | "active";
-type TodolistsType ={
+type TodolistsType = {
 	id: string;
 	title: string;
 	filter: FilterValuesType;
 }
+
 function App() {
 	// const [ratingValue, setRatingValue] = useState<RatingValueType>(0)
 	// const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false);
@@ -36,8 +37,8 @@ function App() {
 	// ]);
 	// let [filter, setFilter] = useState<FilterValuesType>("all");
 
-	let todolistID1=v1();
-	let todolistID2=v1();
+	let todolistID1 = v1();
+	let todolistID2 = v1();
 
 	let [todolists, setTodolists] = useState<Array<TodolistsType>>([
 		{id: todolistID1, title: 'What to learn', filter: 'completed'},
@@ -45,14 +46,14 @@ function App() {
 	])
 
 	let [tasks, setTasks] = useState({
-		[todolistID1]:[
+		[todolistID1]: [
 			{id: v1(), title: "HTML&CSS", isDone: true},
 			{id: v1(), title: "JS", isDone: true},
 			{id: v1(), title: "ReactJS", isDone: false},
 			{id: v1(), title: "Rest API", isDone: false},
 			{id: v1(), title: "GraphQL", isDone: false},
 		],
-		[todolistID2]:[
+		[todolistID2]: [
 			{id: v1(), title: "HTML&CSS2", isDone: true},
 			{id: v1(), title: "JS2", isDone: true},
 			{id: v1(), title: "ReactJS2", isDone: false},
@@ -82,10 +83,10 @@ function App() {
 	}
 
 
-
 	function changeFilter(value: FilterValuesType) {
-		// setFilter(value);
+		setFilter(value);
 	}
+
 	return (
 		<div className="App">
 			{/*<Greeting/>*/}
@@ -112,7 +113,7 @@ function App() {
 			{/*	setAccordionCollapsed(!accordionCollapsed)*/}
 			{/*}}/>*/}
 			{/*<UncontrolledOnOff/>*/}
-			{todolists.map((el)=> {
+			{todolists.map((el) => {
 				let tasksForTodolist = tasks[el.id];
 				if (el.filter === "active") {
 					tasksForTodolist = tasks[el.id].filter(t => t.isDone === false);
@@ -121,6 +122,8 @@ function App() {
 					tasksForTodolist = tasks[el.id].filter(t => t.isDone === true);
 				}
 				return (<TodolistAssociativeArray
+					key={el.id}
+					id={el.id}
 					title={el.title}
 					tasks={tasksForTodolist}
 					removeTask={removeTask}
@@ -128,7 +131,8 @@ function App() {
 					addTask={addTask}
 					changeTaskStatus={changeStatus}
 					filter={el.filter}
-				/>)})
+				/>)
+			})
 			}
 		</div>
 	)
