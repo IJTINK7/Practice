@@ -34,12 +34,12 @@ function App() {
 	//     {id: v1(), title: "Rest API", isDone: false},
 	//     {id: v1(), title: "GraphQL", isDone: false},
 	// ]);
-	// let [filter, setFilter] = useState<FilterValuesType>("all");
+	let [filter, setFilter] = useState<FilterValuesType>("all");
 
 	let todolistID1=v1();
 	let todolistID2=v1();
 
-	let [todolists, setTodolists] = useState<Array<todolistsType>>([
+	let [todolists, setTodolists] = useState<Array<TodolistsType>>([
 		{id: todolistID1, title: 'What to learn', filter: 'all'},
 		{id: todolistID2, title: 'What to buy', filter: 'all'},
 	])
@@ -62,33 +62,33 @@ function App() {
 	});
 
 	function removeTask(id: string) {
-		let filteredTasks = tasks.filter(t => t.id != id);
-		setTasks(filteredTasks);
+		// let filteredTasks = tasks.filter(t => t.id != id);
+		// setTasks(filteredTasks);
 	}
 
 	function addTask(title: string) {
-		let task = {id: v1(), title: title, isDone: false};
-		let newTasks = [task, ...tasks];
-		setTasks(newTasks);
+		// let task = {id: v1(), title: title, isDone: false};
+		// let newTasks = [task, ...tasks];
+		// setTasks(newTasks);
 	}
 
 	function changeStatus(taskId: string, isDone: boolean) {
-		let task = tasks.find(t => t.id === taskId);
-		if (task) {
-			task.isDone = isDone;
-		}
-
-		setTasks([...tasks]);
+		// let task = tasks.find(t => t.id === taskId);
+		// if (task) {
+		// 	task.isDone = isDone;
+		// }
+		//
+		// setTasks([...tasks]);
 	}
 
 	let tasksForTodolist = tasks;
 
-	if (filter === "active") {
-		tasksForTodolist = tasks.filter(t => t.isDone === false);
-	}
-	if (filter === "completed") {
-		tasksForTodolist = tasks.filter(t => t.isDone === true);
-	}
+	// if (filter === "active") {
+	// 	tasksForTodolist = tasks.filter(t => t.isDone === false);
+	// }
+	// if (filter === "completed") {
+	// 	tasksForTodolist = tasks.filter(t => t.isDone === true);
+	// }
 
 	function changeFilter(value: FilterValuesType) {
 		setFilter(value);
@@ -119,7 +119,8 @@ function App() {
 			{/*	setAccordionCollapsed(!accordionCollapsed)*/}
 			{/*}}/>*/}
 			{/*<UncontrolledOnOff/>*/}
-			<TodolistAssociativeArray title="What to learn"
+			<TodolistAssociativeArray
+							  title="What to learn"
 							  tasks={tasksForTodolist}
 							  removeTask={removeTask}
 							  changeFilter={changeFilter}
