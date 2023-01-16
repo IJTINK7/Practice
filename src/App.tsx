@@ -40,8 +40,8 @@ function App() {
 	let todolistID2=v1();
 
 	let [todolists, setTodolists] = useState<Array<TodolistsType>>([
-		{id: todolistID1, title: 'What to learn', filter: 'all'},
-		{id: todolistID2, title: 'What to buy', filter: 'all'},
+		{id: todolistID1, title: 'What to learn', filter: 'completed'},
+		{id: todolistID2, title: 'What to buy', filter: 'active'},
 	])
 
 	let [tasks, setTasks] = useState({
@@ -81,14 +81,7 @@ function App() {
 		// setTasks([...tasks]);
 	}
 
-	// let tasksForTodolist = tasks;
 
-	// if (filter === "active") {
-	// 	tasksForTodolist = tasks.filter(t => t.isDone === false);
-	// }
-	// if (filter === "completed") {
-	// 	tasksForTodolist = tasks.filter(t => t.isDone === true);
-	// }
 
 	function changeFilter(value: FilterValuesType) {
 		// setFilter(value);
@@ -121,6 +114,12 @@ function App() {
 			{/*<UncontrolledOnOff/>*/}
 			{todolists.map((el)=> {
 				let tasksForTodolist = tasks[el.id];
+				if (el.filter === "active") {
+					tasksForTodolist = tasks[el.id].filter(t => t.isDone === false);
+				}
+				if (el.filter === "completed") {
+					tasksForTodolist = tasks[el.id].filter(t => t.isDone === true);
+				}
 				return (<TodolistAssociativeArray
 					title={el.title}
 					tasks={tasksForTodolist}
