@@ -34,7 +34,7 @@ function App() {
 	//     {id: v1(), title: "Rest API", isDone: false},
 	//     {id: v1(), title: "GraphQL", isDone: false},
 	// ]);
-	let [filter, setFilter] = useState<FilterValuesType>("all");
+	// let [filter, setFilter] = useState<FilterValuesType>("all");
 
 	let todolistID1=v1();
 	let todolistID2=v1();
@@ -119,15 +119,17 @@ function App() {
 			{/*	setAccordionCollapsed(!accordionCollapsed)*/}
 			{/*}}/>*/}
 			{/*<UncontrolledOnOff/>*/}
-			<TodolistAssociativeArray
-							  title="What to learn"
-							  tasks={tasksForTodolist}
-							  removeTask={removeTask}
-							  changeFilter={changeFilter}
-							  addTask={addTask}
-							  changeTaskStatus={changeStatus}
-							  filter={filter}
-					/>
+			{todolists.map((el)=> {
+				return (<TodolistAssociativeArray
+					title={el.title}
+					tasks={tasksForTodolist}
+					removeTask={removeTask}
+					changeFilter={changeFilter}
+					addTask={addTask}
+					changeTaskStatus={changeStatus}
+					filter={el.filter}
+				/>)})
+			}
 		</div>
 	)
 }
