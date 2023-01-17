@@ -82,20 +82,9 @@ function App() {
 		// setTasks([...tasks]);
 	}
 
-
-	// let tasksForTodolist = tasks;
-	//
-	// if (filter === "active") {
-	// 	tasksForTodolist = tasks.filter(t => t.isDone === false);
-	// }
-	// if (filter === "completed") {
-	// 	tasksForTodolist = tasks.filter(t => t.isDone === true);
-	// }
-
 	function changeFilter(value: FilterValuesType) {
 		// setFilter(value);
 	}
-
 
 	return (
 		<div className="App">
@@ -123,15 +112,26 @@ function App() {
 			{/*	setAccordionCollapsed(!accordionCollapsed)*/}
 			{/*}}/>*/}
 			{/*<UncontrolledOnOff/>*/}
-			<TodolistAssociativeArray
-					  title="What to learn"
-					  tasks={tasksForTodolist}
-					  removeTask={removeTask}
-					  changeFilter={changeFilter}
-					  addTask={addTask}
-					  changeTaskStatus={changeStatus}
-					  filter={filter}
-			/>
+			{todolists.map(el=>{
+				let tasksForTodolist = tasks;
+
+				if (filter === "active") {
+					tasksForTodolist = tasks.filter(t => t.isDone === false);
+				}
+				if (filter === "completed") {
+					tasksForTodolist = tasks.filter(t => t.isDone === true);
+				}
+				return <TodolistAssociativeArray
+					title={el.title}
+					tasks={tasksForTodolist}
+					removeTask={removeTask}
+					changeFilter={changeFilter}
+					addTask={addTask}
+					changeTaskStatus={changeStatus}
+					filter={el.filter}
+				/>
+			})}
+
 		</div>
 	)
 }
