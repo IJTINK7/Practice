@@ -83,8 +83,8 @@ function App() {
 	}
 
 
-	function changeFilter(value: FilterValuesType) {
-		setFilter(value);
+	function changeFilter(id: string, value: FilterValuesType) {
+		setTodolists(todolists.map(el=>el.id === id ? {...el, filter: value} : el))
 	}
 
 	return (
