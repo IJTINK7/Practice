@@ -71,15 +71,9 @@ function App() {
 		setTasks({...tasks, [todolistId]: [newTask, ...tasks[todolistId]]});
 	}
 
-	function changeStatus(taskId: string, isDone: boolean) {
-		// let task = tasks.find(t => t.id === taskId);
-		// if (task) {
-		// 	task.isDone = isDone;
-		// }
-		//
-		// setTasks([...tasks]);
+	function changeStatus(todolistId: string, taskId: string, isDone: boolean) {
+		setTasks({...tasks, [todolistId]: tasks[todolistId].map(el=>el.id === taskId ? {...el, isDone: isDone} : el)});
 	}
-
 
 	function changeFilter(id: string, value: FilterValuesType) {
 		setTodolists(todolists.map(el=>el.id === id ? {...el, filter: value} : el))
