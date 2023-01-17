@@ -122,6 +122,8 @@ function App() {
 					tasksForTodolist = tasks[el.id].filter(t => t.isDone);
 				}
 				return <TodolistAssociativeArray
+					key={el.id}
+					todolistID={el.id}
 					title={el.title}
 					tasks={tasksForTodolist}
 					removeTask={removeTask}
