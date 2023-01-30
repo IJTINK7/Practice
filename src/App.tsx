@@ -113,15 +113,20 @@ function App() {
 			{/*	setAccordionCollapsed(!accordionCollapsed)*/}
 			{/*}}/>*/}
 			{/*<UncontrolledOnOff/>*/}
-			<TodolistAssociativeArray
-					title={'What to learn'}
+			{todolists.map(el=>{
+				return <TodolistAssociativeArray
+					key={el.id}
+					id={el.id}
+					title={el.title}
 					tasks={tasksForTodolist}
 					removeTask={removeTask}
 					changeFilter={changeFilter}
 					addTask={addTask}
 					changeTaskStatus={changeStatus}
 					filter={filter}
-			/>
+				/>
+			})}
+
 		</div>
 	)
 }

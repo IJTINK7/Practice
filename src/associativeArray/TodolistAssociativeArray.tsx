@@ -8,6 +8,8 @@ type TaskType = {
 }
 
 type PropsType = {
+	key: string;
+	id: string;
 	todolistID: string;
 	title: string
 	tasks: Array<TaskType>
