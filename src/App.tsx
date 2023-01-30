@@ -73,8 +73,8 @@ function App() {
 		//
 	}
 
-	function changeFilter(value: FilterValuesType) {
-		//
+	function changeFilter(todolistID:string, value: FilterValuesType) {
+		setTodolists(todolists.map(el=>el.id === todolistID ? {...el, filter: value} : el))
 	}
 
 	return (
@@ -114,7 +114,7 @@ function App() {
 				}
 				return <TodolistAssociativeArray
 					key={el.id}
-					id={el.id}
+					todolistID={el.id}
 					title={el.title}
 					tasks={tasksForTodolist}
 					removeTask={removeTask}
