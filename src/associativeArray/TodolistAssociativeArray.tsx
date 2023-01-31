@@ -47,7 +47,7 @@ export function TodolistAssociativeArray(props: PropsType) {
 	const onAllClickHandler = () => props.changeFilter(props.todolistID, "all");
 	const onActiveClickHandler = () => props.changeFilter(props.todolistID, "active");
 	const onCompletedClickHandler = () => props.changeFilter(props.todolistID, "completed");
-	const removeTodolistHandler =()=> {
+	const removeTodolistHandler = () => {
 		props.removeTodolist(props.todolistID)
 	}
 
@@ -86,11 +86,14 @@ export function TodolistAssociativeArray(props: PropsType) {
 		</ul>
 		<div>
 			<button className={props.filter === 'all' ? "active-filter" : ""}
-					onClick={onAllClickHandler}>All</button>
+					onClick={onAllClickHandler}>All
+			</button>
 			<button className={props.filter === 'active' ? "active-filter" : ""}
-					onClick={onActiveClickHandler}>Active</button>
+					onClick={onActiveClickHandler}>Active
+			</button>
 			<button className={props.filter === 'completed' ? "active-filter" : ""}
-					onClick={onCompletedClickHandler}>Completed</button>
+					onClick={onCompletedClickHandler}>Completed
+			</button>
 		</div>
 	</div>
 }
