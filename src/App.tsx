@@ -12,10 +12,12 @@ type TodolistsType = {
 }
 
 function App() {
+	let todolistID1 = v1();
+	let todolistID2 = v1();
 
 	let [todolists, setTodolists] = useState<Array<TodolistsType>>([
-		{id: v1(), title: 'What to learn', filter: 'all'},
-		{id: v1(), title: 'What to buy', filter: 'all'},
+		{id: todolistID1, title: 'What to learn', filter: 'active'},
+		{id: todolistID2, title: 'What to buy', filter: 'completed'},
 	])
 
 	let [tasks, setTasks] = useState([
@@ -25,20 +27,16 @@ function App() {
 		{id: v1(), title: "Rest API", isDone: false},
 		{id: v1(), title: "GraphQL", isDone: false},
 	]);
-	let [filter, setFilter] = useState<FilterValuesType>("all");
-
 
 	function removeTask(id: string) {
 		// let filteredTasks = tasks.filter(t => t.id !== id);
 		// setTasks(filteredTasks);
 	}
-
 	function addTask(title: string) {
 		// let task = {id: v1(), title: title, isDone: false};
 		// let newTasks = [task, ...tasks];
 		// setTasks(newTasks);
 	}
-
 	function changeStatus(taskId: string, isDone: boolean) {
 		// let task = tasks.find(t => t.id === taskId);
 		// if (task) {
@@ -46,11 +44,8 @@ function App() {
 		// }
 		// setTasks([...tasks]);
 	}
-
-
-
-	function changeFilter(value: FilterValuesType) {
-		setFilter(value);
+	function changeFilter(todolistID: string, value: FilterValuesType) {
+		setTodolists(todolists.map(el =>el.id === todolistID ? {...el, filter: value} : el));
 	}
 
 	return (
@@ -58,14 +53,16 @@ function App() {
 			{todolists.map(el => {
 				let tasksForTodolist = tasks;
 
-				if (filter === "active") {
-					tasksForTodolist = tasks.filter(t => t.isDone);
+				if (el.filter === "active") {
+					tasksForTodolist = tasksForTodolist.filter(t => !t.isDone);
 				}
-				if (filter === "completed") {
-					tasksForTodolist = tasks.filter(t => t.isDone);
+				if (el.filter === "completed") {
+					tasksForTodolist = tasksForTodolist.filter(t => t.isDone);
 				}
 				return (
 					<TodolistAssociativeArray
+						key={el.id}
+						todolistID={el.id}
 						title={el.title}
 						tasks={tasksForTodolist}
 						removeTask={removeTask}
