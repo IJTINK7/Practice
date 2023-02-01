@@ -28,9 +28,6 @@ import {TaskType, Todolist} from './Todolist';
 import {v1} from 'uuid';
 export type FilterValuesType = "all" | "active" | "completed";
 type TodolistsType = { id: string, title: string}
-// type TasksType = {
-// 	[key: string]: TaskType[]
-// }
 type TasksStateType={
 	[key:string]:{
 		data:TaskType[],
@@ -69,13 +66,14 @@ function App() {
 		delete tasks[todolistId]
 	}
 	function removeTask(todolistId: string, taskId: string) {
+		setTasks({...tasks,[todolistId1]:{...tasks[todolistId],data:tasks[todolistId].data.filter(el => el.id !== taskId)}})
 		// setTasks({...tasks, [todolistId]: tasks[todolistId].filter(el => el.id !== taskId)})
 	}
 	function addTask(todolistId: string, title: string) {
-		// let newTask = {id: v1(), title: title, isDone: false};
-		// setTasks({...tasks, [todolistId]: [...tasks[todolistId], newTask]})
-		// // let newTasks = [task, ...tasks];
-		// // setTasks(newTasks);
+		let newTask = {id: v1(), title: title, isDone: false};
+		setTasks({...tasks,
+			[todolistId]: {...tasks[todolistId],
+				data: [newTask, ...tasks[todolistId].data]}})
 	}
 	function changeStatus(todolistId: string, taskId: string, newIsDone: boolean) {
 		// setTasks({
