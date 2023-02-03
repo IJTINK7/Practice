@@ -25,13 +25,13 @@ function App() {
 		[todolistId1]: {
 			data: [
 				{id: v1(), title: "HTML&CSS1111", isDone: true},
-				{id: v1(), title: "JS1111", isDone: true}
+				{id: v1(), title: "JS1111", isDone: false}
 			],
 			filter: "all"
 		},
 		[todolistId2]: {
 			data: [
-				{id: v1(), title: "HTML&CSS22222", isDone: true},
+				{id: v1(), title: "HTML&CSS22222", isDone: false},
 				{id: v1(), title: "JS2222", isDone: true}
 			],
 			filter: "all"
@@ -53,7 +53,7 @@ function App() {
 		setTasks({...tasks, [todolistId]: {...tasks[todolistId], data: [newTask, ...tasks[todolistId].data]}})
 	}
 	function changeStatus(todolistId: string, taskId: string, newIsDone: boolean) {
-		//
+		setTasks({...tasks, [todolistId]: {...tasks[todolistId], data:tasks[todolistId].data.map(el=>el.id === taskId ? {...el, isDone: newIsDone}: el)}})
 	}
 	function changeFilter(todolistId: string, value: FilterValuesType) {
 		//
