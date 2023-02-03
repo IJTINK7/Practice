@@ -56,7 +56,7 @@ function App() {
 		setTasks({...tasks, [todolistId]: {...tasks[todolistId], data:tasks[todolistId].data.map(el=>el.id === taskId ? {...el, isDone: newIsDone}: el)}})
 	}
 	function changeFilter(todolistId: string, value: FilterValuesType) {
-		//
+		setTasks({...tasks, [todolistId]: {...tasks[todolistId], filter:value}})
 	}
 
 	return (
