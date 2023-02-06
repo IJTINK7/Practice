@@ -22,7 +22,6 @@ export const Site = () => {
                         <Route path={"/page2"} element={<PageTwo/>}/>
                         <Route path={"/page3"} element={<PageThree/>}/>
                     </Routes>
-               content
                 </div>
             </div>
         </div>
