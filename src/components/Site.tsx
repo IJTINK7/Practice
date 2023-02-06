@@ -1,5 +1,7 @@
 import React from 'react';
+import { Routes } from 'react-router-dom';
 import styles from './Site.module.css'
+import {PageOne} from "./pages/PageOne";
 
 
 export const Site = () => {
@@ -11,6 +13,11 @@ export const Site = () => {
                     1234
                 </div>
                 <div className={styles.content}>
+                    <Routes>
+                        <Route path={"/page1"} element={<PageOne/>}></Route>
+                        <Route path={"/page2"} element={<PageTwo/>}></Route>
+                        <Route path={"/page3"} element={<PageThree/>}></Route>
+                    </Routes>
                content
                 </div>
             </div>
