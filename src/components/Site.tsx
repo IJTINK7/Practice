@@ -1,7 +1,9 @@
 import React from 'react';
-import { Routes } from 'react-router-dom';
+import { Routes, Route} from 'react-router-dom';
 import styles from './Site.module.css'
 import {PageOne} from "./pages/PageOne";
+import {PageTwo} from "./pages/PageTwo";
+import {PageThree} from "./pages/PageThree";
 
 
 export const Site = () => {
@@ -14,9 +16,9 @@ export const Site = () => {
                 </div>
                 <div className={styles.content}>
                     <Routes>
-                        <Route path={"/page1"} element={<PageOne/>}></Route>
-                        <Route path={"/page2"} element={<PageTwo/>}></Route>
-                        <Route path={"/page3"} element={<PageThree/>}></Route>
+                        <Route path={"/page1"} element={<PageOne/>}/>
+                        <Route path={"/page2"} element={<PageTwo/>}/>
+                        <Route path={"/page3"} element={<PageThree/>}/>
                     </Routes>
                content
                 </div>
