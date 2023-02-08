@@ -1,5 +1,5 @@
 import React from "react";
-export const SuperPage = () => {
+export const Page = () => {
 	return(
 		<div>
 
