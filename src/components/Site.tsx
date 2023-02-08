@@ -13,9 +13,9 @@ export const Site = () => {
             <div className={styles.header}><h1>HEADER</h1></div>
             <div className={styles.body}>
                 <div className={styles.nav}>
-                    <div><NavLink className={({isActive})=> isActive ? styles.active : styles.navLink} to={"/page1"}>Page1</NavLink></div>
-                    <div><NavLink className={({isActive})=> isActive ? styles.active : styles.navLink}  to={"/page2"}>Page2</NavLink></div>
-                    <div><NavLink className={({isActive})=> isActive ? styles.active : styles.navLink}  to={"/page3"}>Page3</NavLink></div>
+                    <div><NavLink className={({isActive})=> isActive ? styles.active : styles.navLink} to={"/page/0"}>Page1</NavLink></div>
+                    <div><NavLink className={({isActive})=> isActive ? styles.active : styles.navLink}  to={"/page/1"}>Page2</NavLink></div>
+                    <div><NavLink className={({isActive})=> isActive ? styles.active : styles.navLink}  to={"/page/2"}>Page3</NavLink></div>
                     <div><a href="/page3">Page3 without SPA</a></div>
                 </div>
                 <div className={styles.content}>
