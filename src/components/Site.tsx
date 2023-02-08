@@ -1,10 +1,9 @@
 import React from 'react';
 import { Routes, Route, NavLink} from 'react-router-dom';
 import styles from './Site.module.css'
-import {PageOne} from "./pages/PageOne";
-import {PageTwo} from "./pages/PageTwo";
-import {PageThree} from "./pages/PageThree";
 import {Error404} from "./pages/Error404";
+import {Page} from "./pages/Page";
+import {dataState} from "../data/dataState";
 
 
 export const Site = () => {
@@ -20,9 +19,7 @@ export const Site = () => {
                 </div>
                 <div className={styles.content}>
                     <Routes>
-                        <Route path={"/page1"} element={<PageOne/>}/>
-                        <Route path={"/page2"} element={<PageTwo/>}/>
-                        <Route path={"/page3"} element={<PageThree/>}/>
+                        <Route path={"/page/:id"} element={<Page pages={dataState.pages}/>}/>
                         <Route path={"/*"} element={<Error404/>}/>
                     </Routes>
                 </div>
