@@ -9,7 +9,7 @@ export const Page = (props:PropsType) => {
 	const params = useParams()
 	return(
 		<div>
-			<Content/>
+			<Content page={props.pages[Number(params.id)]}/>
 		</div>
 	);
 }
