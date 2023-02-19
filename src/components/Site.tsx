@@ -4,6 +4,9 @@ import styles from './Site.module.css'
 import {Error404} from "./pages/Error404";
 import {Page} from "./pages/Page";
 import {dataState} from "../data/dataState";
+import {PageOne} from "./pages/PageOne";
+import {PageTwo} from "./pages/PageTwo";
+import {PageThree} from "./pages/PageThree";
 
 
 export const Site = () => {
@@ -15,7 +18,11 @@ export const Site = () => {
                     1234
                 </div>
                 <div className={styles.content}>
-                    Content
+                    <Routes>
+                        <Route path={"/page1"} element={<PageOne/>}/>
+                        <Route path={"/page2"} element={<PageTwo/>}/>
+                        <Route path={"/page3"} element={<PageThree/>}/>
+                    </Routes>
                 </div>
             </div>
         </div>
