@@ -18,6 +18,7 @@ export const Site = () => {
                     <div><NavLink to={"page/1"}>Page1</NavLink></div>
                     <div><NavLink to={"page/2"}>Page2</NavLink></div>
                     <div><NavLink to={"page/3"}>Page3</NavLink></div>
+                    <div><a href="/page3">Page3 Without SPA</a></div>
                 </div>
                 <div className={styles.content}>
                     <Routes>
