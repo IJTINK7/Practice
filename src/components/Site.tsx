@@ -15,7 +15,9 @@ export const Site = () => {
             <div className={styles.header}><h1>HEADER</h1></div>
             <div className={styles.body}>
                 <div className={styles.nav}>
-                    1234
+                    <div><NavLink to={"page/1"}>Page1</NavLink></div>
+                    <div><NavLink to={"page/2"}>Page2</NavLink></div>
+                    <div><NavLink to={"page/3"}>Page3</NavLink></div>
                 </div>
                 <div className={styles.content}>
                     <Routes>
