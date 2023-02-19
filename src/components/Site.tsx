@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, NavLink} from 'react-router-dom';
+import { Routes, Route, NavLink, Navigate} from 'react-router-dom';
 import styles from './Site.module.css'
 import {Error404} from "./pages/Error404";
 import {Page} from "./pages/Page";
@@ -22,10 +22,11 @@ export const Site = () => {
                 </div>
                 <div className={styles.content}>
                     <Routes>
+                        <Route path={"/"} element={<Navigate to={'/page1'} />}/>
                         <Route path={"/page1"} element={<PageOne/>}/>
                         <Route path={"/page2"} element={<PageTwo/>}/>
                         <Route path={"/page3"} element={<PageThree/>}/>
-                        <Route path={"*"} element={<Error404/>}/>
+                        <Route path={"/*"} element={<Error404/>}/>
                     </Routes>
                 </div>
             </div>
