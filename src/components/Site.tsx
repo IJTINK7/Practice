@@ -1,5 +1,9 @@
 import React from 'react';
+import {Route, Routes, NavLink } from 'react-router-dom';
 import styles from './Site.module.css'
+import {PageOne} from "./pages/PageOne";
+import {PageTwo} from "./pages/PageTwo";
+import {PageThree} from "./pages/PageThree";
 
 
 export const Site = () => {
@@ -11,7 +15,11 @@ export const Site = () => {
                     1234
                 </div>
                 <div className={styles.content}>
-               content
+                    <Routes>
+                        <Route path={"/page1"} element={<PageOne/>}></Route>
+                        <Route path={"/page2"} element={<PageTwo/>}></Route>
+                        <Route path={"/page3"} element={<PageThree/>}></Route>
+                    </Routes>
                 </div>
             </div>
         </div>
