@@ -1,9 +1,10 @@
 import React from 'react';
-import {Route, Routes, NavLink } from 'react-router-dom';
+import {Route, Routes, NavLink, Navigate } from 'react-router-dom';
 import styles from './Site.module.css'
 import {PageOne} from "./pages/PageOne";
 import {PageTwo} from "./pages/PageTwo";
 import {PageThree} from "./pages/PageThree";
+import {Error404} from "./pages/Error404";
 
 
 export const Site = () => {
@@ -12,15 +13,17 @@ export const Site = () => {
             <div className={styles.header}><h1>HEADER</h1></div>
             <div className={styles.body}>
                 <div className={styles.nav}>
-                    <NavLink to={'/page1'}>Page 1</NavLink>
-                    <NavLink to={'/page2'}>Page 2</NavLink>
-                    <NavLink to={'/page3'}>Page 3</NavLink>
+                    <div><NavLink to={'/page1'}>Page 1</NavLink></div>
+                    <div><NavLink to={'/page2'}>Page 2</NavLink></div>
+                    <div><NavLink to={'/page3'}>Page 3</NavLink></div>
                 </div>
                 <div className={styles.content}>
                     <Routes>
-                        <Route path={"/page1"} element={<PageOne/>}></Route>
-                        <Route path={"/page2"} element={<PageTwo/>}></Route>
-                        <Route path={"/page3"} element={<PageThree/>}></Route>
+                        <Route path={"/"} element={<Navigate to={"/page1"}/>}/>
+                        <Route path={"/page1"} element={<PageOne/>}/>
+                        <Route path={"/page2"} element={<PageTwo/>}/>
+                        <Route path={"/page3"} element={<PageThree/>}/>
+                        <Route path={"/*"} element={<Error404/>}/>
                     </Routes>
                 </div>
             </div>
