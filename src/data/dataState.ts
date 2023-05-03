@@ -2,15 +2,15 @@ export const dataState: DataStateType ={
 	pages:
 		[
 			{
-				heading: "1",
+				heading: "123",
 				about: "11",
 			},
 			{
-				heading: "2",
+				heading: "231",
 				about: "22",
 			},
 			{
-				heading: "3",
+				heading: "312",
 				about: "33",
 			},
 		],
